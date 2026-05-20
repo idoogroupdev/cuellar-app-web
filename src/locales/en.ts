@@ -1,3 +1,1 @@
-export default {
-  Ingresar: "Login",
-};
+export default {};

@@ -11,11 +11,15 @@ import "vuetify/styles";
 
 // Composables
 import { createVuetify } from "vuetify";
-import colors from "vuetify/util/colors";
 import { createVueI18nAdapter } from "vuetify/locale/adapters/vue-i18n";
 import { createI18n, useI18n } from "vue-i18n";
+import { aliases, mdi } from "vuetify/iconsets/mdi";
 import en from "@/locales/en";
 import es from "@/locales/es";
+import * as z from "zod";
+import { es as esZod } from "zod/locales";
+
+z.config(esZod());
 
 export const i18n = createI18n({
   legacy: false,
@@ -31,13 +35,6 @@ export const i18n = createI18n({
 export default createVuetify({
   theme: {
     defaultTheme: "light",
-    themes: {
-      light: {
-        colors: {
-          primary: colors.blue.darken1,
-        },
-      },
-    },
   },
   locale: {
     adapter: createVueI18nAdapter({ i18n, useI18n }),
@@ -48,6 +45,21 @@ export default createVuetify({
       elevation: 0,
       rounded: "lg",
       class: "text-none",
+    },
+    VTextField: {
+      variant: "outlined",
+      rounded: "lg",
+      density: "compact",
+    },
+    VSheet: {
+      rounded: "lg",
+    },
+  },
+  icons: {
+    defaultSet: "mdi",
+    aliases,
+    sets: {
+      mdi,
     },
   },
 });
