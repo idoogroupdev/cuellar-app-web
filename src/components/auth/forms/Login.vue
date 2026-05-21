@@ -23,7 +23,13 @@
         prepend-inner-icon="mdi-lock-outline"
       />
       <p></p>
-      <v-btn class="mt-2" type="submit" block append-icon="mdi-arrow-right">
+      <v-btn
+        class="mt-2"
+        type="submit"
+        block
+        append-icon="mdi-arrow-right"
+        :loading
+      >
         {{ $t("auth.forms.login.submit") }}</v-btn
       >
     </v-form>
@@ -36,6 +42,15 @@ import { useForm, useField } from "vee-validate";
 const emit = defineEmits<{
   submit: [{ email: string; password: string }];
 }>();
+
+const props = withDefaults(
+  defineProps<{
+    loading: boolean;
+  }>(),
+  {
+    loading: false,
+  },
+);
 
 const LoginSchema = z.object({
   email: z.email(),
