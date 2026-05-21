@@ -9,9 +9,12 @@ import { useLogin } from "@/graphql/composables/auth";
 import { useMessagesStore } from "@/stores/messages";
 import { useAppStore } from "@/stores/app";
 import { useAuthCookie } from "@/composables/useAuthCookie";
+import { useLocale } from "vuetify";
 
 const { mutate: login, loading, onError, onDone } = useLogin();
+const { t } = useLocale();
 const messages = useMessagesStore();
+const app = useAppStore();
 const { setCookie } = useAuthCookie();
 
 const onSubmit = (values: { email: string; password: string }) => {
@@ -26,6 +29,26 @@ onError((error) => {
 });
 
 onDone(async ({ data }) => {
-  console.log(data);
+  if (data?.login.user.isStaff) {
+    app.setUser(data.login.user);
+    app.setPermissions(data.login.user.permissions);
+    setCookie([
+      {
+        name: "token",
+        value: data.login.token,
+      },
+      {
+        name: "refresh",
+        value: data.login.refreshToken,
+      },
+    ]);
+
+    // TODO: Redireccionar a la página de inicio
+  } else {
+    messages.add({
+      text: t("errors.notAccess"),
+      color: "error",
+    });
+  }
 });
 </script>

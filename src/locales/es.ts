@@ -13,4 +13,7 @@ export default {
       },
     },
   },
+  errors: {
+    notAccess: "No tienes permisos para acceder a esta página",
+  },
 };
