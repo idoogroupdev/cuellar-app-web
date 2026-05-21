@@ -5,14 +5,16 @@
 </template>
 
 <script lang="ts" setup>
-import { useLogin } from "@/graphql/composables/auth";
-import { useMessagesStore } from "@/stores/messages";
-import { useAppStore } from "@/stores/app";
 import { useAuthCookie } from "@/composables/useAuthCookie";
+import { useLogin } from "@/graphql/composables/auth";
+import { useAppStore } from "@/stores/app";
+import { useMessagesStore } from "@/stores/messages";
+import { useRouter } from "vue-router";
 import { useLocale } from "vuetify";
 
 const { mutate: login, loading, onError, onDone } = useLogin();
 const { t } = useLocale();
+const router = useRouter();
 const messages = useMessagesStore();
 const app = useAppStore();
 const { setCookie } = useAuthCookie();
@@ -43,7 +45,7 @@ onDone(async ({ data }) => {
       },
     ]);
 
-    // TODO: Redireccionar a la página de inicio
+    router.push("/dashboard");
   } else {
     messages.add({
       text: t("errors.notAccess"),
