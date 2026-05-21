@@ -1,4 +1,5 @@
 export default {
+  close: "Cerrar",
   forms: {
     email: "Correo electrónico",
     password: "Contraseña",
