@@ -29,3 +29,11 @@ export const LOGIN = gql`
     }
   }
 `;
+
+export const REVOKE_TOKEN = gql`
+  mutation revokeToken($refreshToken: String) {
+    revokeToken(refreshToken: $refreshToken) {
+      revoked
+    }
+  }
+`;

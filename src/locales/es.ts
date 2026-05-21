@@ -16,4 +16,10 @@ export default {
   errors: {
     notAccess: "No tienes permisos para acceder a esta página",
   },
+  layouts: {
+    dashboard: {
+      logout: "Cerrar sesión",
+      appTitle: "Dulcería Cuellar",
+    },
+  },
 };

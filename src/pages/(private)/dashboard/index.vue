@@ -1,5 +1,11 @@
+<route lang="yaml">
+meta:
+  layout: dashboard
+</route>
 <template>
-  <h1>Dashboard</h1>
+  <v-container>
+    <h1>Home</h1>
+  </v-container>
 </template>
 <script lang="ts" setup>
 //
