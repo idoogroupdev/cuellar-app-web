@@ -11,6 +11,9 @@ importers:
       '@apollo/client':
         specifier: ^3.14.1
         version: 3.14.1(@types/react@19.2.7)(graphql@16.14.0)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
+      '@fontsource/open-sans':
+        specifier: ^5.2.7
+        version: 5.2.7
       '@fontsource/roboto':
         specifier: 5.2.7
         version: 5.2.7
@@ -502,6 +505,9 @@ packages:
     peerDependenciesMeta:
       '@noble/hashes':
         optional: true
+
+  '@fontsource/open-sans@5.2.7':
+    resolution: {integrity: sha512-8yfgDYjE5O0vmTPdrcjV35y4yMnctsokmi9gN49Gcsr0sjzkMkR97AnKDe6OqZh2SFkYlR28fxOvi21bYEgMSw==}
 
   '@fontsource/roboto@5.2.7':
     resolution: {integrity: sha512-fca6Jtyxn6kPR51+TTTMCFm0FOhnKaLEYYiAQc8P/4iFCKoKGR0aX89QR4CfP+N64RPXJus64UxhJaVENnSM6Q==}
@@ -3906,6 +3912,8 @@ snapshots:
       levn: 0.4.1
 
   '@exodus/bytes@1.15.0': {}
+
+  '@fontsource/open-sans@5.2.7': {}
 
   '@fontsource/roboto@5.2.7': {}
 
