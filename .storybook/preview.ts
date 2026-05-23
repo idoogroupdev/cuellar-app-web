@@ -1,6 +1,12 @@
 import type { Preview } from "@storybook/vue3-vite";
 import { setup } from "@storybook/vue3-vite";
-import vuetify, { i18n } from "@/plugins/vuetify";
+import vuetify, { i18n } from "../src/plugins/vuetify";
+
+// Styles
+// @ts-ignore
+import "@mdi/font/css/materialdesignicons.css";
+// @ts-ignore
+import "vuetify/styles";
 
 setup((app) => {
   app.use(i18n);
@@ -8,6 +14,17 @@ setup((app) => {
 });
 
 const preview: Preview = {
+  // decorators: [
+  //   // [Vuetify] Could not find injected layout
+  //   (story) => ({
+  //     components: { Story: story() },
+  //     template: `
+  //     <v-layout style="margin: 3em;">
+  //       <Story />
+  //     </v-layout>
+  //   `,
+  //   }),
+  // ],
   parameters: {
     controls: {
       matchers: {
