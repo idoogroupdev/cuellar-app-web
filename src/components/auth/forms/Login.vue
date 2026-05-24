@@ -13,7 +13,7 @@
         type="email"
         v-model="email.value.value"
         :error-messages="email.errorMessage.value"
-        prepend-inner-icon="mdi-email-outline"
+        prepend-inner-icon="$email"
       />
       <v-text-field
         :label="$t('forms.password')"

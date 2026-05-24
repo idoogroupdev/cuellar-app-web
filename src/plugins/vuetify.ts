@@ -1,23 +1,17 @@
-/**
- * plugins/vuetify.ts
- *
- * Framework documentation: https://vuetifyjs.com`
- */
-
 // Styles
 import "@mdi/font/css/materialdesignicons.css";
 // @ts-ignore
 import "vuetify/styles";
 
-// Composables
-import { createVuetify } from "vuetify";
-import { createVueI18nAdapter } from "vuetify/locale/adapters/vue-i18n";
-import { createI18n, useI18n } from "vue-i18n";
-import { aliases, mdi } from "vuetify/iconsets/mdi";
+import { iconsax } from "@/components/iconsax";
 import en from "@/locales/en";
 import es from "@/locales/es";
+import { createI18n, useI18n } from "vue-i18n";
+import { createVuetify } from "vuetify";
+import { createVueI18nAdapter } from "vuetify/locale/adapters/vue-i18n";
 import * as z from "zod";
 import { es as esZod } from "zod/locales";
+import { aliases, mdi } from "vuetify/iconsets/mdi";
 
 z.config(esZod());
 
@@ -57,7 +51,10 @@ export default createVuetify({
   },
   icons: {
     defaultSet: "mdi",
-    aliases,
+    aliases: {
+      ...aliases,
+      ...iconsax,
+    },
     sets: {
       mdi,
     },
