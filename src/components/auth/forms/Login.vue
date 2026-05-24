@@ -20,7 +20,7 @@
         type="password"
         v-model="password.value.value"
         :error-messages="password.errorMessage.value"
-        prepend-inner-icon="mdi-lock-outline"
+        prepend-inner-icon="$lock"
       />
       <p></p>
       <v-btn

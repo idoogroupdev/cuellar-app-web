@@ -20,12 +20,10 @@
 interface Props {
   size?: string | number;
   color?: string;
-  strokeWidth?: string;
 }
 
 withDefaults(defineProps<Props>(), {
   size: 24,
   color: "currentColor",
-  strokeWidth: "1.5",
 });
 </script>
