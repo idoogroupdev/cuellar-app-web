@@ -43,7 +43,7 @@ export default createVuetify({
     VTextField: {
       variant: "outlined",
       rounded: "lg",
-      density: "compact",
+      density: "comfortable",
     },
     VSheet: {
       rounded: "lg",
