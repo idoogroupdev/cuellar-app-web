@@ -21,6 +21,7 @@ declare module 'vue-router/auto-routes' {
     '/(public)/': RouteRecordInfo<'/(public)/', '/', Record<never, never>, Record<never, never>>,
     '/(public)/forgot-password/': RouteRecordInfo<'/(public)/forgot-password/', '/forgot-password', Record<never, never>, Record<never, never>>,
     '/(public)/forgot-password/check': RouteRecordInfo<'/(public)/forgot-password/check', '/forgot-password/check', Record<never, never>, Record<never, never>>,
+    '/(public)/forgot-password/reset-password': RouteRecordInfo<'/(public)/forgot-password/reset-password', '/forgot-password/reset-password', Record<never, never>, Record<never, never>>,
     '/(private)/dashboard/': RouteRecordInfo<'/(private)/dashboard/', '/dashboard', Record<never, never>, Record<never, never>>,
   }
 
@@ -45,6 +46,10 @@ declare module 'vue-router/auto-routes' {
     }
     'src/pages/(public)/forgot-password/check.vue': {
       routes: '/(public)/forgot-password/check'
+      views: never
+    }
+    'src/pages/(public)/forgot-password/reset-password.vue': {
+      routes: '/(public)/forgot-password/reset-password'
       views: never
     }
     'src/pages/(private)/dashboard/index.vue': {
