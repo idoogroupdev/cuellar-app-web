@@ -1,7 +1,16 @@
 <template>
-  <v-sheet class="mx-auto" width="400">
-    <div class="text-center mb-8">
-      <h1 class="mb-1">
+  <v-sheet width="400" class="mx-auto d-flex flex-column ga-5">
+    <div>
+      <v-btn
+        variant="text"
+        prepend-icon="mdi-arrow-left"
+        @click="$router.go(-1)"
+      >
+        {{ $t("back") }}
+      </v-btn>
+    </div>
+    <div class="text-center">
+      <h1>
         {{ $t("auth.forms.passwordRecoveryEmailStep.title") }}
       </h1>
       <p class="text-grey-darken-2">
