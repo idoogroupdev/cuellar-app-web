@@ -1,5 +1,5 @@
 <template>
-  <v-sheet class="mx-auto" width="350">
+  <v-sheet class="mx-auto" width="400">
     <div class="text-center mb-8">
       <h1 class="mb-1">
         {{ $t("auth.forms.passwordRecoveryEmailStep.title") }}
