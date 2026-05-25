@@ -74,6 +74,16 @@ export function useRequestAuthCode() {
 }
 
 // verifyAuthCode
+export interface VerifyAuthCodeMutation {
+  verifyAuthCode: {
+    payload: LoginPayload;
+    refreshExpiresIn: number;
+    token: string;
+    refreshToken: string;
+    user: UserNode;
+  };
+}
+
 interface verifyAuthCodeMutationVariables {
   input: {
     email: string;
@@ -83,7 +93,7 @@ interface verifyAuthCodeMutationVariables {
 }
 
 export function useVerifyAuthCode() {
-  return useMutation<LoginMutation, verifyAuthCodeMutationVariables>(
+  return useMutation<VerifyAuthCodeMutation, verifyAuthCodeMutationVariables>(
     VERIFY_AUTH_CODE,
   );
 }

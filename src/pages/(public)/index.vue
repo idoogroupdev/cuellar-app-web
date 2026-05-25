@@ -35,7 +35,7 @@ onError((error) => {
 });
 
 onDone(async ({ data }) => {
-  if (data?.login.user.isStaff) {
+  if (data?.login.user.isStaff || data?.login.user.isSuperuser) {
     app.setUser(data.login.user);
     app.setPermissions(data.login.user.permissions);
     setCookie([
