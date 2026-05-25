@@ -1,20 +1,34 @@
+import { useAuthCookie } from "@/composables/useAuthCookie";
 import {
   ApolloClient,
+  ApolloLink,
   HttpLink,
   InMemoryCache,
-  ApolloLink,
 } from "@apollo/client/core";
+import { setContext } from "@apollo/client/link/context";
 import { DefaultApolloClient } from "@vue/apollo-composable";
 import type { App } from "vue";
+
+const cache = new InMemoryCache();
 
 const httpLink = new HttpLink({
   uri: import.meta.env.VITE_API_URL,
 });
 
-const cache = new InMemoryCache();
+const authLink = setContext((_, { headers }) => {
+  const { token } = useAuthCookie();
+  const newHeaders = token ? { Authorization: `JWT ${token}` } : {};
+
+  return {
+    headers: {
+      ...headers,
+      ...newHeaders,
+    },
+  };
+});
 
 export const apolloClient = new ApolloClient({
-  link: ApolloLink.from([httpLink]),
+  link: ApolloLink.from([authLink, httpLink]),
   cache,
 });
 
