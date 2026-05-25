@@ -22,9 +22,18 @@
         :error-messages="password.errorMessage.value"
         prepend-inner-icon="$lock"
       />
-      <p></p>
+
+      <div class="text-right mt-n3">
+        <RouterLink
+          class="text-decoration-none text-primary text-body-medium font-weight-medium"
+          :to="forgotPasswordUrl"
+        >
+          {{ $t("auth.forms.login.forgotPassword") }}
+        </RouterLink>
+      </div>
+
       <v-btn
-        class="mt-2"
+        class="mt-6"
         type="submit"
         block
         append-icon="mdi-arrow-right"
@@ -38,6 +47,7 @@
 <script lang="ts" setup>
 import * as z from "zod";
 import { useForm, useField } from "vee-validate";
+import { RouterLink } from "vue-router";
 
 const emit = defineEmits<{
   submit: [{ email: string; password: string }];
@@ -46,9 +56,11 @@ const emit = defineEmits<{
 const props = withDefaults(
   defineProps<{
     loading: boolean;
+    forgotPasswordUrl: string;
   }>(),
   {
     loading: false,
+    forgotPasswordUrl: "#",
   },
 );
 
