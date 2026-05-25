@@ -19,6 +19,8 @@ declare module 'vue-router/auto-routes' {
    */
   export interface RouteNamedMap {
     '/(public)/': RouteRecordInfo<'/(public)/', '/', Record<never, never>, Record<never, never>>,
+    '/(public)/forgot-password/': RouteRecordInfo<'/(public)/forgot-password/', '/forgot-password', Record<never, never>, Record<never, never>>,
+    '/(public)/forgot-password/check': RouteRecordInfo<'/(public)/forgot-password/check', '/forgot-password/check', Record<never, never>, Record<never, never>>,
     '/(private)/dashboard/': RouteRecordInfo<'/(private)/dashboard/', '/dashboard', Record<never, never>, Record<never, never>>,
   }
 
@@ -35,6 +37,14 @@ declare module 'vue-router/auto-routes' {
   export interface _RouteFileInfoMap {
     'src/pages/(public)/index.vue': {
       routes: '/(public)/'
+      views: never
+    }
+    'src/pages/(public)/forgot-password/index.vue': {
+      routes: '/(public)/forgot-password/'
+      views: never
+    }
+    'src/pages/(public)/forgot-password/check.vue': {
+      routes: '/(public)/forgot-password/check'
       views: never
     }
     'src/pages/(private)/dashboard/index.vue': {
