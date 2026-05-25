@@ -3,6 +3,7 @@ import {
   LOGIN,
   REVOKE_TOKEN,
   REQUEST_AUTH_CODE,
+  VERIFY_AUTH_CODE,
 } from "@/graphql/mutations/auth";
 import { useMutation } from "@vue/apollo-composable";
 
@@ -57,15 +58,32 @@ export interface RequestAuthCodeMutation {
   };
 }
 
+type AuthCode = "REGISTRATION" | "PASSWORD_RECOVERY";
+
 export interface RequestAuthCodeMutationVariables {
   input: {
     email: string;
-    authCode: "REGISTRATION" | "PASSWORD_RECOVERY";
+    authCode: AuthCode;
   };
 }
 
 export function useRequestAuthCode() {
   return useMutation<RequestAuthCodeMutation, RequestAuthCodeMutationVariables>(
     REQUEST_AUTH_CODE,
+  );
+}
+
+// verifyAuthCode
+interface verifyAuthCodeMutationVariables {
+  input: {
+    email: string;
+    code: string;
+    authCode: AuthCode;
+  };
+}
+
+export function useVerifyAuthCode() {
+  return useMutation<LoginMutation, verifyAuthCodeMutationVariables>(
+    VERIFY_AUTH_CODE,
   );
 }

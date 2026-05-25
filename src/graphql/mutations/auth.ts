@@ -45,3 +45,26 @@ export const REQUEST_AUTH_CODE = gql`
     }
   }
 `;
+
+export const VERIFY_AUTH_CODE = gql`
+  mutation verifyAuthCode($input: VerifyAuthCodeInput!) {
+    verifyAuthCode(input: $input) {
+      payload
+      refreshExpiresIn
+      refreshToken
+      token
+      user {
+        email
+        firstName
+        isStaff
+        isSuperuser
+        role {
+          name
+        }
+        permissions {
+          codename
+        }
+      }
+    }
+  }
+`;
