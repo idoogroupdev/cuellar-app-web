@@ -10,6 +10,13 @@ export default {
         title: "Bienvenido de nuevo",
         description: "Ingresa tus datos para continuar",
         submit: "Ingresar",
+        forgotPassword: "¿Olvidaste tu contraseña?",
+      },
+      passwordRecoveryEmailStep: {
+        title: "Recuperar contraseña",
+        description:
+          "Ingrese el correo electrónico donde se enviará el código de recuperación de contraseña.",
+        submit: "Enviar",
       },
     },
   },
