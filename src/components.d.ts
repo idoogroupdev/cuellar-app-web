@@ -17,6 +17,7 @@ declare module 'vue' {
     Login: typeof import('./components/auth/forms/Login.vue')['default']
     PasswordRecoveryEmailStep: typeof import('./components/auth/forms/PasswordRecoveryEmailStep.vue')['default']
     PasswordRecoveryOtpStep: typeof import('./components/auth/forms/PasswordRecoveryOtpStep.vue')['default']
+    ResetPassword: typeof import('./components/auth/forms/ResetPassword.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }

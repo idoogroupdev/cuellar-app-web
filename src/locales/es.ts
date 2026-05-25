@@ -4,6 +4,7 @@ export default {
   forms: {
     email: "Correo electrónico",
     password: "Contraseña",
+    newPassword: "Confirmar contraseña",
   },
   auth: {
     forms: {
@@ -25,10 +26,15 @@ export default {
         verify: "Verificar",
         resendCode: "Reenviar código",
       },
+      resetPassword: {
+        title: "Recuperar contraseña",
+        description: "Ingrese su nueva contraseña",
+      },
     },
   },
   errors: {
     notAccess: "No tienes permisos para acceder a esta página",
+    passwordNotMatch: "Las contraseñas no coinciden",
   },
   layouts: {
     dashboard: {
