@@ -1,6 +1,12 @@
 import type { UserNode } from "@/graphql/entities/user";
-import { LOGIN, REVOKE_TOKEN } from "@/graphql/mutations/auth";
+import {
+  LOGIN,
+  REVOKE_TOKEN,
+  REQUEST_AUTH_CODE,
+} from "@/graphql/mutations/auth";
 import { useMutation } from "@vue/apollo-composable";
+
+// Login
 
 export interface LoginPayload {
   email: string;
@@ -27,6 +33,8 @@ export function useLogin() {
   return useMutation<LoginMutation, LoginMutationVariables>(LOGIN);
 }
 
+// RevokeToken
+
 export interface RevokeTokenMutation {
   revoked: boolean;
 }
@@ -38,5 +46,26 @@ export interface RevokeTokenMutationVariables {
 export function useRevokeRefreshToken() {
   return useMutation<RevokeTokenMutation, RevokeTokenMutationVariables>(
     REVOKE_TOKEN,
+  );
+}
+
+// RequestAuthCode
+
+export interface RequestAuthCodeMutation {
+  requestAuthCode: {
+    message: string;
+  };
+}
+
+export interface RequestAuthCodeMutationVariables {
+  input: {
+    email: string;
+    authCode: "REGISTRATION" | "PASSWORD_RECOVERY";
+  };
+}
+
+export function useRequestAuthCode() {
+  return useMutation<RequestAuthCodeMutation, RequestAuthCodeMutationVariables>(
+    REQUEST_AUTH_CODE,
   );
 }

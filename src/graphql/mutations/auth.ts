@@ -37,3 +37,11 @@ export const REVOKE_TOKEN = gql`
     }
   }
 `;
+
+export const REQUEST_AUTH_CODE = gql`
+  mutation requestAuthCode($input: RequestAuthCodeInput!) {
+    requestAuthCode(input: $input) {
+      message
+    }
+  }
+`;
