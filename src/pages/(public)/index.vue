@@ -1,6 +1,10 @@
 <template>
   <v-container class="fill-height d-flex align-center justify-center">
-    <Login @submit="onSubmit" :loading="loading" />
+    <Login
+      @submit="onSubmit"
+      :loading="loading"
+      forgot-password-url="/forgot-password"
+    />
   </v-container>
 </template>
 
