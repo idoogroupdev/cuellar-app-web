@@ -23,6 +23,7 @@ export default {
         title: "Recuperar contraseña",
         description: "Ingrese el código enviado a su correo electrónico...",
         verify: "Verificar",
+        resendCode: "Reenviar código",
       },
     },
   },

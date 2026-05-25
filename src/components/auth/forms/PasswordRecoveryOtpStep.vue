@@ -23,6 +23,13 @@
         v-model="otp.value.value"
         :error-messages="otp.errorMessage.value"
       ></v-otp-input>
+
+      <div class="text-right">
+        <v-btn variant="text" :loading="reSending" @click="emit('reSend')">
+          {{ $t("auth.forms.passwordRecoveryOtpStep.resendCode") }}
+        </v-btn>
+      </div>
+
       <v-btn
         class="mt-6"
         type="submit"
@@ -41,14 +48,17 @@ import { useForm, useField } from "vee-validate";
 
 const emit = defineEmits<{
   submit: [{ otp: string }];
+  reSend: [];
 }>();
 
 const props = withDefaults(
   defineProps<{
     loading: boolean;
+    reSending: boolean;
   }>(),
   {
     loading: false,
+    reSending: false,
   },
 );
 
