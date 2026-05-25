@@ -55,6 +55,7 @@
     "resize-observer-polyfill": "^1.5.1",
     "sass-embedded": "^1.92.1",
     "storybook": "^10.4.0",
+    "storybook-vue3-router": "^7.0.0",
     "typescript": "~5.9.2",
     "unplugin-auto-import": "^20.1.0",
     "unplugin-fonts": "^1.4.0",

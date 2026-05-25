@@ -123,6 +123,9 @@ importers:
       storybook:
         specifier: ^10.4.0
         version: 10.4.0(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2)(@testing-library/dom@10.4.1)(@types/react@19.2.7)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
+      storybook-vue3-router:
+        specifier: ^7.0.0
+        version: 7.0.0(@storybook/vue3@10.4.0(storybook@10.4.0(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2)(@testing-library/dom@10.4.1)(@types/react@19.2.7)(react-dom@19.2.5(react@19.2.5))(react@19.2.5))(vue@3.5.26(typescript@5.9.3)))(vue-router@4.6.4(vue@3.5.26(typescript@5.9.3)))(vue@3.5.26(typescript@5.9.3))
       typescript:
         specifier: ~5.9.2
         version: 5.9.3
@@ -3057,6 +3060,18 @@ packages:
 
   std-env@4.1.0:
     resolution: {integrity: sha512-Rq7ybcX2RuC55r9oaPVEW7/xu3tj8u4GeBYHBWCychFtzMIr86A7e3PPEBPT37sHStKX3+TiX/Fr/ACmJLVlLQ==}
+
+  storybook-vue3-router@7.0.0:
+    resolution: {integrity: sha512-4OaamqjgUmMKywNmwn5VCneQa5NQTVSRTJ0rtqX1KDq2tsVFlhXT2s7AQFjBl4aSoUnz/4BSzichhFUMAb2Uxg==}
+    peerDependencies:
+      '@storybook/vue3': 10.x
+      vue: 3.x
+      vue-router: 4.x
+    peerDependenciesMeta:
+      vue:
+        optional: true
+      vue-router:
+        optional: true
 
   storybook@10.4.0:
     resolution: {integrity: sha512-zrtctbVa6xEXCXuE3vsiR0At31zLOtzj8QudN/GaBJLZl0Z2DfF1rDPtTxdAbAp11M2J/7JVHaTIQKXauQPbmg==}
@@ -6482,6 +6497,13 @@ snapshots:
   stackback@0.0.2: {}
 
   std-env@4.1.0: {}
+
+  storybook-vue3-router@7.0.0(@storybook/vue3@10.4.0(storybook@10.4.0(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2)(@testing-library/dom@10.4.1)(@types/react@19.2.7)(react-dom@19.2.5(react@19.2.5))(react@19.2.5))(vue@3.5.26(typescript@5.9.3)))(vue-router@4.6.4(vue@3.5.26(typescript@5.9.3)))(vue@3.5.26(typescript@5.9.3)):
+    dependencies:
+      '@storybook/vue3': 10.4.0(storybook@10.4.0(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2)(@testing-library/dom@10.4.1)(@types/react@19.2.7)(react-dom@19.2.5(react@19.2.5))(react@19.2.5))(vue@3.5.26(typescript@5.9.3))
+    optionalDependencies:
+      vue: 3.5.26(typescript@5.9.3)
+      vue-router: 4.6.4(vue@3.5.26(typescript@5.9.3))
 
   storybook@10.4.0(@emnapi/core@1.9.2)(@emnapi/runtime@1.9.2)(@testing-library/dom@10.4.1)(@types/react@19.2.7)(react-dom@19.2.5(react@19.2.5))(react@19.2.5):
     dependencies:
