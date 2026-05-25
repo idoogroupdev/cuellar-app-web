@@ -48,6 +48,9 @@ export default createVuetify({
     VSheet: {
       rounded: "lg",
     },
+    VAlert: {
+      variant: "tonal",
+    },
   },
   icons: {
     defaultSet: "mdi",
