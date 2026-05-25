@@ -1,25 +1,24 @@
 import { ApolloError } from "@apollo/client";
 
-interface FieldErrors {
-  [attributeName: string]: string;
-}
+type FieldErrors = Record<string, string>;
 
 export function normalizeApolloError(error: ApolloError | null) {
   if (!error) return;
 
-  //   TODO: use custom ApolloError with typing
-
   const errors: FieldErrors = {};
 
-  for (const formattedError of error.graphQLErrors) {
-    if (formattedError.extensions?.code === "VALIDATION_ERROR") {
-      const fields = formattedError.extensions?.fields as FieldErrors;
-      for (const key in fields) {
-        let value = fields[key] as string | string[];
-        if (Array.isArray(value)) {
-          value = value[0] as string;
+  for (const gqlError of error.graphQLErrors) {
+    const code = gqlError.extensions?.code;
+
+    if (code === "VALIDATION_ERROR") {
+      const fields = gqlError.extensions?.fields as FieldErrors;
+
+      if (fields && typeof fields === "object") {
+        for (const [key, value] of Object.entries(
+          fields as Record<string, string | string[]>,
+        )) {
+          errors[key] = Array.isArray(value) ? (value[0] ?? "") : value;
         }
-        errors[key] = value;
       }
     }
   }
