@@ -68,3 +68,13 @@ export const VERIFY_AUTH_CODE = gql`
     }
   }
 `;
+
+export const RESET_PASSWORD = gql`
+  mutation resetPassword($input: ResetPasswordInput!) {
+    resetPassword(input: $input) {
+      user {
+        email
+      }
+    }
+  }
+`;

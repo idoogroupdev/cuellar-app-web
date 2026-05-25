@@ -4,18 +4,19 @@ import {
   REVOKE_TOKEN,
   REQUEST_AUTH_CODE,
   VERIFY_AUTH_CODE,
+  RESET_PASSWORD,
 } from "@/graphql/mutations/auth";
 import { useMutation } from "@vue/apollo-composable";
 
 // Login
 
-export interface LoginPayload {
+interface LoginPayload {
   email: string;
   exp: number;
   origIat: number;
 }
 
-export interface LoginMutation {
+interface LoginMutation {
   login: {
     payload: LoginPayload;
     refreshExpiresIn: number;
@@ -25,7 +26,7 @@ export interface LoginMutation {
   };
 }
 
-export interface LoginMutationVariables {
+interface LoginMutationVariables {
   email: string;
   password: string;
 }
@@ -36,11 +37,11 @@ export function useLogin() {
 
 // RevokeToken
 
-export interface RevokeTokenMutation {
+interface RevokeTokenMutation {
   revoked: boolean;
 }
 
-export interface RevokeTokenMutationVariables {
+interface RevokeTokenMutationVariables {
   refreshToken: string;
 }
 
@@ -52,7 +53,7 @@ export function useRevokeRefreshToken() {
 
 // RequestAuthCode
 
-export interface RequestAuthCodeMutation {
+interface RequestAuthCodeMutation {
   requestAuthCode: {
     message: string;
   };
@@ -60,7 +61,7 @@ export interface RequestAuthCodeMutation {
 
 type AuthCode = "REGISTRATION" | "PASSWORD_RECOVERY";
 
-export interface RequestAuthCodeMutationVariables {
+interface RequestAuthCodeMutationVariables {
   input: {
     email: string;
     authCode: AuthCode;
@@ -74,6 +75,7 @@ export function useRequestAuthCode() {
 }
 
 // verifyAuthCode
+
 export interface VerifyAuthCodeMutation {
   verifyAuthCode: {
     payload: LoginPayload;
@@ -84,7 +86,7 @@ export interface VerifyAuthCodeMutation {
   };
 }
 
-interface verifyAuthCodeMutationVariables {
+interface VerifyAuthCodeMutationVariables {
   input: {
     email: string;
     code: string;
@@ -93,7 +95,29 @@ interface verifyAuthCodeMutationVariables {
 }
 
 export function useVerifyAuthCode() {
-  return useMutation<VerifyAuthCodeMutation, verifyAuthCodeMutationVariables>(
+  return useMutation<VerifyAuthCodeMutation, VerifyAuthCodeMutationVariables>(
     VERIFY_AUTH_CODE,
+  );
+}
+
+// resetPassword
+
+interface ResetPasswordMutation {
+  resetPassword: {
+    user: {
+      email: string;
+    };
+  };
+}
+
+interface ResetPasswordMutationVariables {
+  input: {
+    newPassword: string;
+  };
+}
+
+export function useResetPassword() {
+  return useMutation<ResetPasswordMutation, ResetPasswordMutationVariables>(
+    RESET_PASSWORD,
   );
 }
