@@ -16,6 +16,7 @@ declare module 'vue' {
     LockIcon: typeof import('./components/iconsax/LockIcon.vue')['default']
     Login: typeof import('./components/auth/forms/Login.vue')['default']
     PasswordRecoveryEmailStep: typeof import('./components/auth/forms/PasswordRecoveryEmailStep.vue')['default']
+    PasswordRecoveryOtpStep: typeof import('./components/auth/forms/PasswordRecoveryOtpStep.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }

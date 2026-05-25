@@ -19,6 +19,11 @@ export default {
           "Ingrese el correo electrónico donde se enviará el código de recuperación de contraseña.",
         submit: "Enviar",
       },
+      passwordRecoveryOtpStep: {
+        title: "Recuperar contraseña",
+        description: "Ingrese el código enviado a su correo electrónico...",
+        verify: "Verificar",
+      },
     },
   },
   errors: {
