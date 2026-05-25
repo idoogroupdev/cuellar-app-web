@@ -17,7 +17,13 @@
         {{ $t("auth.forms.resetPassword.description") }}
       </p>
     </div>
-    <v-form @submit.prevent="submit" class="pa-4 d-flex flex-column ga-2">
+    <v-alert
+      v-if="errors?.password"
+      color="error"
+      icon="$error"
+      :text="errors?.password"
+    ></v-alert>
+    <v-form @submit.prevent="submit" class="pa-4 d-flex flex-column ga-3">
       <v-text-field
         :label="$t('forms.password')"
         type="password"
@@ -53,9 +59,14 @@ const emit = defineEmits<{
   submit: [{ password: string }];
 }>();
 
+export interface FormErros {
+  password: string | undefined;
+}
+
 const props = withDefaults(
   defineProps<{
     loading: boolean;
+    errors?: FormErros;
   }>(),
   {
     loading: false,
