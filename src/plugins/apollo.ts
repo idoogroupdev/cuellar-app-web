@@ -17,12 +17,12 @@ const httpLink = new HttpLink({
 
 const authLink = setContext((_, { headers }) => {
   const { token } = useAuthCookie();
-  const newHeaders = token ? { Authorization: `JWT ${token}` } : {};
+  const authHeaders = token ? { Authorization: `JWT ${token}` } : {};
 
   return {
     headers: {
       ...headers,
-      ...newHeaders,
+      ...authHeaders,
     },
   };
 });
