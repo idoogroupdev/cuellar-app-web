@@ -20,5 +20,7 @@ declare module 'vue' {
     ResetPasswordStep: typeof import('./components/auth/forms/ResetPasswordStep.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    UserForm: typeof import('./components/users/forms/UserForm.vue')['default']
+    UserFormModal: typeof import('./components/users/modals/UserFormModal.vue')['default']
   }
 }

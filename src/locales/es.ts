@@ -5,6 +5,27 @@ export default {
     email: "Correo electrónico",
     password: "Contraseña",
     newPassword: "Confirmar contraseña",
+    role: "Rol",
+    isActive: "Activo",
+    firstName: "Nombre",
+    lastName: "Apellido",
+  },
+  users: {
+    modals: {
+      user: {
+        createTitle: "Crear usuario",
+        editTitle: "Editar usuario",
+        description: "Gestiona la información de acceso y perfil del usuario.",
+      },
+    },
+    forms: {
+      user: {
+        create: "Crear",
+        update: "Guardar cambios",
+        created: "Usuario creado correctamente",
+        updated: "Usuario actualizado correctamente",
+      },
+    },
   },
   auth: {
     forms: {
@@ -35,6 +56,8 @@ export default {
   errors: {
     notAccess: "No tienes permisos para acceder a esta página",
     passwordNotMatch: "Las contraseñas no coinciden",
+    passwordRequired: "La contraseña debe tener al menos 8 caracteres",
+    passwordMin: "La contraseña debe tener al menos 8 caracteres",
   },
   layouts: {
     dashboard: {
