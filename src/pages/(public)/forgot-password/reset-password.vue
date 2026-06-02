@@ -5,7 +5,9 @@
     <ResetPasswordStep
       :loading="loading"
       @submit="onSubmit"
-      :errors="{ password: normalizeApolloError(error)?.password }"
+      :errors="{
+        password: normalizeApolloError(error?.graphQLErrors)?.password,
+      }"
     />
   </v-container>
 </template>

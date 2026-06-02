@@ -1,13 +1,15 @@
-import { ApolloError } from "@apollo/client";
+import type { GraphQLFormattedError } from "graphql";
 
 type FieldErrors = Record<string, string>;
 
-export function normalizeApolloError(error: ApolloError | null) {
-  if (!error) return;
+export function normalizeApolloError(
+  _errors: readonly GraphQLFormattedError[] | undefined,
+) {
+  if (!_errors) return;
 
   const errors: FieldErrors = {};
 
-  for (const gqlError of error.graphQLErrors) {
+  for (const gqlError of _errors) {
     const code = gqlError.extensions?.code;
 
     if (code === "VALIDATION_ERROR") {
