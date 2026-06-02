@@ -53,6 +53,7 @@ export default createVuetify({
     },
     VSelect: {
       variant: "outlined",
+      density: "comfortable",
     },
   },
   icons: {
