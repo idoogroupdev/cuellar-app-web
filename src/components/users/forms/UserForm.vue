@@ -128,7 +128,7 @@ const roleItems = computed(() =>
 const getInitialValues = () => ({
   email: props.user?.email ?? "",
   password: "",
-  roleName: props.user?.role?.name ?? "",
+  roleName: props.user?.role?.name ?? undefined,
   firstName: props.user?.firstName ?? "",
   lastName: props.user?.lastName ?? "",
   isActive: props.user?.isActive ?? true,

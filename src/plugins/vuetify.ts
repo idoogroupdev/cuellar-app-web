@@ -51,6 +51,9 @@ export default createVuetify({
     VAlert: {
       variant: "tonal",
     },
+    VSelect: {
+      variant: "outlined",
+    },
   },
   icons: {
     defaultSet: "mdi",
