@@ -1,5 +1,5 @@
 <template>
-  <v-sheet width="520" class="mx-auto d-flex flex-column ga-5">
+  <v-sheet max-width="580" class="mx-auto d-flex flex-column ga-5">
     <v-form @submit.prevent="submit" class="pa-4 d-flex flex-column ga-3">
       <v-text-field
         :label="$t('forms.email')"
