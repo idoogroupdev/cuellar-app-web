@@ -1,4 +1,5 @@
 export default {
+  appTitle: "Dulcería Cuellar",
   close: "Cerrar",
   back: "Atrás",
   forms: {
@@ -62,7 +63,6 @@ export default {
   layouts: {
     dashboard: {
       logout: "Cerrar sesión",
-      appTitle: "Dulcería Cuellar",
     },
   },
 };
