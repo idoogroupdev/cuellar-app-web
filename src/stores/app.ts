@@ -2,6 +2,12 @@ import type { PermissionNode } from "@/graphql/entities/permission";
 import type { UserNode } from "@/graphql/entities/user";
 import { defineStore } from "pinia";
 
+export type PermissionsType = "view" | "add" | "change" | "delete";
+
+// This is the codename permission in Django for
+// easy understanding in the UI I will call it section
+export type SectionType = "user";
+
 export const useAppStore = defineStore("app", () => {
   const permissions = ref([] as PermissionNode[]);
   const user = ref({} as UserNode);
@@ -20,6 +26,16 @@ export const useAppStore = defineStore("app", () => {
     passwdRecoveryEmail.value = email;
   }
 
+  function hasPermission(permission: PermissionsType, section: SectionType) {
+    const requestPermission = `${permission}_${section}`;
+
+    const has_permission = permissions.value.some(
+      (p) => p.codename === requestPermission,
+    );
+
+    return has_permission;
+  }
+
   return {
     permissions,
     user,
@@ -27,5 +43,6 @@ export const useAppStore = defineStore("app", () => {
     setPermissions,
     setUser,
     setPasswdRecoveryEmail,
+    hasPermission,
   };
 });
