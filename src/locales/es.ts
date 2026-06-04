@@ -69,4 +69,7 @@ export default {
     dashboard: "Panel",
     users: "Usuarios",
   },
+  sections: {
+    users: "Usuarios",
+  },
 };

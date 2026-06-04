@@ -14,7 +14,65 @@
           </div>
         </v-list-item>
         <v-divider />
-        <v-list-item title="Home" link></v-list-item>
+        <div v-for="section in menu" :key="section.title">
+          <v-list-item
+            v-if="section.items.length === 1"
+            :active="firstItem(section.items).active"
+            active-class="bg-grey-lighten-5"
+            density="compact"
+            fluid
+            link
+            rounded="lg"
+            @click="router.push(firstItem(section.items).to)"
+          >
+            <template #prepend>
+              <v-icon :icon="section.icon" />
+            </template>
+            <template #title>
+              <span class="">
+                {{ section.title }}
+              </span>
+            </template>
+          </v-list-item>
+          <!-- <v-list-group v-else fluid>
+            <template #activator="{ props }">
+              <v-list-item
+                :active="groupItem.active"
+                active-class="bg-grey-lighten-5"
+                v-bind="props"
+                density="compact"
+                rounded="lg"
+              >
+                <template #prepend>
+                  <v-icon :icon="groupItem.icon" />
+                </template>
+                <template #title>
+                  <span class="font-weight-light">
+                    {{ groupItem.title }}
+                  </span>
+                </template>
+              </v-list-item>
+            </template>
+            <v-list-item
+              v-for="item in groupItem.items"
+              :key="item.title"
+              :active="item.active"
+              active-class="bg-grey-darken-5"
+              class="mt-1"
+              density="compact"
+              link
+              rounded="lg"
+              @click="router.push(item.to)"
+            >
+              <template #prepend>
+                <v-icon icon="mdi-circle" size="24" />
+              </template>
+              <span class="font-weight-light">
+                {{ item.title }}
+              </span>
+            </v-list-item>
+          </v-list-group> -->
+        </div>
       </v-list>
       <template v-slot:append>
         <div class="pa-2">
@@ -43,26 +101,108 @@
   </v-layout>
 </template>
 <script lang="ts" setup>
-import { useRevokeRefreshToken } from "@/graphql/composables/auth";
 import { useAuthCookie } from "@/composables/useAuthCookie";
-import { useRouter } from "vue-router";
+import { useRevokeRefreshToken } from "@/graphql/composables/auth";
 import { hasRouteAccess } from "@/lib/has-route-access";
+import type { PermissionsType, SectionType } from "@/stores/app";
+import { useAppStore } from "@/stores/app";
+import { useRoute, useRouter } from "vue-router";
+import { useLocale } from "vuetify";
 
 const { mutate: revokeToken, loading } = useRevokeRefreshToken();
 const { deleteCookies, refresh } = useAuthCookie();
 const router = useRouter();
+const route = useRoute();
+const { hasPermission } = useAppStore();
+const { t } = useLocale();
 
 const drawer = ref(true);
 
-function onLogout() {
+async function onLogout() {
   if (refresh) {
-    revokeToken({
+    await revokeToken({
       refreshToken: refresh,
     });
   }
-
   deleteCookies();
-
   router.push("/");
+}
+
+interface DrawerItem {
+  title: string;
+  to: string;
+  active: boolean;
+}
+
+type DrawerItemConfig = {
+  title: string;
+  to: string;
+  route: string;
+  requiredPermission?: { permission: PermissionsType; section: SectionType };
+};
+
+type DrawerSectionConfig = {
+  title: string;
+  icon: string;
+  route: string;
+  items: DrawerItemConfig[];
+};
+
+const drawerSectionConfig: DrawerSectionConfig[] = [
+  {
+    title: "sections.users",
+    icon: "mdi-account-group",
+    route: "/(private)/dashboard/users/",
+    items: [
+      {
+        title: "sections.users",
+        to: "/dashboard/users/",
+        route: "/(private)/dashboard/users/",
+        requiredPermission: { permission: "view", section: "user" },
+      },
+    ],
+  },
+];
+
+const menu = computed(() => {
+  const items = [];
+
+  for (const section of drawerSectionConfig) {
+    const filteredItems = section.items.filter(
+      (item) =>
+        !item.requiredPermission ||
+        hasPermission(
+          item.requiredPermission.permission,
+          item.requiredPermission.section,
+        ),
+    );
+
+    if (filteredItems.length === 0) {
+      continue;
+    }
+
+    items.push({
+      title: t(section.title),
+      icon: section.icon,
+      active: route.name.includes(section.route),
+      items: filteredItems.map((item) => ({
+        title: t(item.title),
+        to: item.to,
+        active: route.name === item.route,
+      })),
+    });
+  }
+
+  return items;
+});
+
+function firstItem(items: DrawerItem[]) {
+  if (!items)
+    return {
+      active: false,
+      to: "#",
+    };
+
+  return items[0];
 }
 </script>
