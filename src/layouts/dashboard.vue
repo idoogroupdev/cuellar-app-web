@@ -3,10 +3,17 @@
     <v-navigation-drawer
       v-model="drawer"
       floating
-      color="grey-lighten-3"
+      color="grey-lighten-5"
       width="270"
     >
       <v-list nav>
+        <v-list-item>
+          <div class="d-flex justify-center flex-column align-center">
+            <v-img width="120" src="@/assets/logo-v2.png" />
+            <h2>{{ $t("appTitle") }}</h2>
+          </div>
+        </v-list-item>
+        <v-divider />
         <v-list-item title="Home" link></v-list-item>
       </v-list>
       <template v-slot:append>
@@ -17,19 +24,21 @@
         </div>
       </template>
     </v-navigation-drawer>
-    <v-app-bar elevation="1">
+    <v-app-bar elevation="0">
       <v-app-bar-nav-icon
         variant="text"
         @click.stop="drawer = !drawer"
         v-if="$vuetify.display.mobile"
       />
-      <v-app-bar-title class="font-weight-semibold">
-        {{ $t("layouts.dashboard.appTitle") }}
-      </v-app-bar-title>
+
+      <Breadcrumbs />
     </v-app-bar>
 
     <v-main class="overflow-y-auto h-screen">
-      <router-view />
+      <v-container fluid>
+        <router-view v-if="hasRouteAccess()" />
+        <v-alert v-else :text="$t('errors.notAccess')" type="warning" />
+      </v-container>
     </v-main>
   </v-layout>
 </template>
@@ -37,6 +46,7 @@
 import { useRevokeRefreshToken } from "@/graphql/composables/auth";
 import { useAuthCookie } from "@/composables/useAuthCookie";
 import { useRouter } from "vue-router";
+import { hasRouteAccess } from "@/lib/has-route-access";
 
 const { mutate: revokeToken, loading } = useRevokeRefreshToken();
 const { deleteCookies, refresh } = useAuthCookie();

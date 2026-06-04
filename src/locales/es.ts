@@ -65,4 +65,8 @@ export default {
       logout: "Cerrar sesión",
     },
   },
+  breadcrumbs: {
+    dashboard: "Panel",
+    users: "Usuarios",
+  },
 };

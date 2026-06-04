@@ -49,7 +49,7 @@ onDone(async ({ data }) => {
       },
     ]);
 
-    router.push("/dashboard");
+    router.push("/dashboard/users");
   } else {
     messages.add({
       text: t("errors.notAccess"),
