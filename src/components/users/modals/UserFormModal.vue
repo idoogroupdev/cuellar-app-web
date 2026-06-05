@@ -134,6 +134,7 @@ const onSubmit = async (values: UserFormValues) => {
           : "users.forms.user.created",
       ),
       color: "success",
+      variant: "flat",
     });
     emit("saved", savedUser);
   }
