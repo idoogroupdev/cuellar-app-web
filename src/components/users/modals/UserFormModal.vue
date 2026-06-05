@@ -9,6 +9,7 @@
               ? $t('users.modals.user.createTitle')
               : $t('users.modals.user.createTitle')
           "
+          append-icon="mdi-plus"
         ></v-btn>
       </slot>
     </template>
