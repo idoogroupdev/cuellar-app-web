@@ -27,3 +27,7 @@ export function normalizeApolloError(
 
   return errors;
 }
+
+export function isNumeric(str: string): boolean {
+  return !Number.isNaN(Number.parseFloat(str)) && Number.isFinite(Number(str));
+}
