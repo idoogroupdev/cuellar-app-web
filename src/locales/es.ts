@@ -12,6 +12,12 @@ export default {
     lastName: "Apellido",
   },
   users: {
+    table: {
+      empty: "No hay usuarios para mostrar",
+      inactive: "Inactivo",
+      name: "Nombre",
+      search: "Buscar por nombre, apellido o correo",
+    },
     modals: {
       user: {
         createTitle: "Crear usuario",
