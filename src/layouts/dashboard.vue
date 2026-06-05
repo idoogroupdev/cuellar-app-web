@@ -191,12 +191,14 @@ const menu = computed(() => {
 });
 
 function firstItem(items: DrawerItem[]) {
-  if (!items)
+  const item = items[0];
+
+  if (!items || !item)
     return {
       active: false,
       to: "#",
     };
 
-  return items[0];
+  return item;
 }
 </script>
