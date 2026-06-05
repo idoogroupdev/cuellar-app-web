@@ -1,16 +1,10 @@
 <template>
   <v-layout>
-    <v-navigation-drawer
-      v-model="drawer"
-      floating
-      color="grey-lighten-5"
-      width="270"
-    >
+    <v-navigation-drawer v-model="drawer" floating color="primary" width="270">
       <v-list nav>
         <v-list-item>
           <div class="d-flex justify-center flex-column align-center">
             <v-img width="120" src="@/assets/logo-v2.png" />
-            <h2>{{ $t("appTitle") }}</h2>
           </div>
         </v-list-item>
         <v-divider />
@@ -18,7 +12,7 @@
           <v-list-item
             v-if="section.items.length === 1"
             :active="firstItem(section.items).active"
-            active-class="bg-grey-lighten-5"
+            active-class="bg-blue-darken-3"
             density="compact"
             fluid
             link
