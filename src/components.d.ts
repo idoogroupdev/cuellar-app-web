@@ -16,6 +16,7 @@ declare module 'vue' {
     EmailIcon: typeof import('./components/iconsax/EmailIcon.vue')['default']
     LockIcon: typeof import('./components/iconsax/LockIcon.vue')['default']
     Login: typeof import('./components/auth/forms/Login.vue')['default']
+    Pagination: typeof import('./components/ui/Pagination.vue')['default']
     PasswordRecoveryEmailStep: typeof import('./components/auth/forms/PasswordRecoveryEmailStep.vue')['default']
     PasswordRecoveryOtpStep: typeof import('./components/auth/forms/PasswordRecoveryOtpStep.vue')['default']
     ResetPasswordStep: typeof import('./components/auth/forms/ResetPasswordStep.vue')['default']
