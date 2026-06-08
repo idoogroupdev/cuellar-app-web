@@ -1,8 +1,9 @@
-export interface PageInfo {
-  endCursor: string | null;
-  hasNextPage: boolean;
+export interface Pagination {
+  totalCount: number;
+  currentPage: number;
+  totalPages: number;
   hasPreviousPage: boolean;
-  startCursor: string | null;
+  hasNextPage: boolean;
 }
 
 export interface ComposableQueryArgs {
@@ -13,6 +14,7 @@ export interface ComposableQueryArgs {
 
 interface PageAndOrderByParams {
   page: number;
+  itemsPerPage: number;
   orderBy: string | undefined;
 }
 

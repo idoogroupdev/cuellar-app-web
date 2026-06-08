@@ -1,10 +1,11 @@
 import gql from "graphql-tag";
 
-export const PAGE_INFO = gql`
-  fragment PageInfo on PageInfo {
-    endCursor
-    hasNextPage
+export const PAGINATION = gql`
+  fragment PaginationInfo on PaginationInfo {
+    currentPage
     hasPreviousPage
-    startCursor
+    totalCount
+    totalPages
+    hasNextPage
   }
 `;

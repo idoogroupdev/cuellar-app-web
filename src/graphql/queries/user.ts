@@ -1,10 +1,10 @@
 import gql from "graphql-tag";
 import { USER_FIELDS } from "@/graphql/fragments/user";
-import { PAGE_INFO } from "@/graphql/fragments/common";
+import { PAGINATION } from "@/graphql/fragments/common";
 
 export const ALL_USERS = gql`
   ${USER_FIELDS}
-  ${PAGE_INFO}
+  ${PAGINATION}
   query allUsers(
     $first: Int
     $offset: Int
@@ -27,8 +27,8 @@ export const ALL_USERS = gql`
           ...UserFields
         }
       }
-      pageInfo {
-        ...PageInfo
+      pagination {
+        ...PaginationInfo
       }
     }
   }

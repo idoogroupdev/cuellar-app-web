@@ -2,6 +2,7 @@ export default {
   appTitle: "Dulcería Cuellar",
   close: "Cerrar",
   back: "Atrás",
+  page: "Página",
   forms: {
     email: "Correo electrónico",
     password: "Contraseña",
