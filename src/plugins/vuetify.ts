@@ -6,6 +6,7 @@ import "vuetify/styles";
 import { iconsax } from "@/components/iconsax";
 import en from "@/locales/en";
 import es from "@/locales/es";
+import { es as esLocaleVuetify, en as enLocaleVuetify } from "vuetify/locale";
 import { createI18n, useI18n } from "vue-i18n";
 import { createVuetify } from "vuetify";
 import { createVueI18nAdapter } from "vuetify/locale/adapters/vue-i18n";
@@ -20,8 +21,14 @@ export const i18n = createI18n({
   locale: "es",
   fallbackLocale: "en",
   messages: {
-    es,
-    en,
+    es: {
+      $vuetify: esLocaleVuetify,
+      ...es,
+    },
+    en: {
+      $vuetify: enLocaleVuetify,
+      ...en,
+    },
   },
 });
 
