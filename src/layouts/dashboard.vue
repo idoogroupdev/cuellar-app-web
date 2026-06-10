@@ -113,12 +113,12 @@ const { t } = useLocale();
 const drawer = ref(true);
 
 async function onLogout() {
+  deleteCookies();
   if (refresh) {
     await revokeToken({
       refreshToken: refresh,
     });
   }
-  deleteCookies();
   router.push("/");
 }
 
