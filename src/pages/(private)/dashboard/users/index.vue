@@ -10,6 +10,8 @@ meta:
       </div>
     </div>
 
+    <v-alert v-if="error" type="error" class="mb-6" :text="error.message" />
+
     <v-data-table-server
       v-model:page="page"
       :headers="headers"
@@ -89,10 +91,19 @@ import { useAppStore } from "@/stores/app";
 
 const { t } = useLocale();
 const { hasPermission } = useAppStore();
-const { allUsers, loading, load, search, page, query, orderBy, itemsPerPage } =
-  useAllUsers({
-    keyParam: "",
-  });
+const {
+  allUsers,
+  loading,
+  load,
+  search,
+  page,
+  query,
+  orderBy,
+  itemsPerPage,
+  error,
+} = useAllUsers({
+  keyParam: "",
+});
 const itemsPerPageOptions = [10, 25, 50, 100];
 
 const modalIsOpen = ref(false);
