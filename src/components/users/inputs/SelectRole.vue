@@ -10,6 +10,10 @@
   />
 </template>
 <script setup lang="ts">
+import { useLocale } from "vuetify";
+
+const { t } = useLocale();
+
 const roles = [
   {
     value: "OPERATOR",
@@ -31,6 +35,10 @@ const roles = [
     value: "DELIVERY_DRIVER",
     title: "DELIVERY_DRIVER",
   },
+  {
+    value: "",
+    title: t("none"),
+  },
 ];
 
 export interface Props {
@@ -39,5 +47,7 @@ export interface Props {
 
 const props = withDefaults(defineProps<Props>(), {});
 
-const model = defineModel<string>("model");
+const model = defineModel<string>("model", {
+  default: undefined,
+});
 </script>

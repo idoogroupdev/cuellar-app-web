@@ -11,6 +11,7 @@ export const ALL_USERS = gql`
     $email_Icontains: String
     $firstName_Icontains: String
     $lastName_Icontains: String
+    $role_Name: String
     $orderBy: String
   ) {
     allUsers(
@@ -19,6 +20,7 @@ export const ALL_USERS = gql`
       email_Icontains: $email_Icontains
       firstName_Icontains: $firstName_Icontains
       lastName_Icontains: $lastName_Icontains
+      role_Name: $role_Name
       orderBy: $orderBy
     ) {
       edges {

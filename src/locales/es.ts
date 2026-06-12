@@ -4,6 +4,7 @@ export default {
   back: "Atrás",
   page: "Página",
   actions: "Acciones",
+  none: "Ninguno",
   forms: {
     email: "Correo electrónico",
     password: "Contraseña",

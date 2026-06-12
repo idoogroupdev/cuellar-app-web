@@ -60,7 +60,7 @@ export default createVuetify({
     },
     VSelect: {
       variant: "outlined",
-      density: "comfortable",
+      density: "compact",
     },
   },
   icons: {

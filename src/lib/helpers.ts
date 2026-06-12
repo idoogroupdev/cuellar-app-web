@@ -31,3 +31,7 @@ export function normalizeApolloError(
 export function isNumeric(str: string): boolean {
   return !Number.isNaN(Number.parseFloat(str)) && Number.isFinite(Number(str));
 }
+
+export function getOrderBy(key: string, order: "asc" | "desc") {
+  return key ? `${order === "desc" ? "-" : ""}${key}` : undefined;
+}

@@ -18,6 +18,7 @@ export interface AllUsersQueryVariables {
   email_Icontains?: string;
   firstName_Icontains?: string;
   lastName_Icontains?: string;
+  role_Name?: string;
   orderBy?: string;
 }
 
@@ -49,11 +50,16 @@ export function useAllUsers({
   limit = PAGE_SIZE,
   keyParam = "allUsers",
 }: ComposableQueryArgs = {}) {
-  const defaults: CommonParams = {
+  interface AllUsersQueryParams extends CommonParams {
+    roleName?: string;
+  }
+
+  const defaults: AllUsersQueryParams = {
     page: 1,
     itemsPerPage: limit,
     query: undefined,
     orderBy: undefined,
+    roleName: undefined,
   };
 
   const queryParams = useQueryParams();
@@ -69,6 +75,7 @@ export function useAllUsers({
       firstName_Icontains: query,
       lastName_Icontains: query,
       email_Icontains: query,
+      role_Name: state.value.roleName,
       orderBy: state.value.orderBy,
     };
   }

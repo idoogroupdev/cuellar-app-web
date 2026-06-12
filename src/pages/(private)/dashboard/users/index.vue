@@ -33,7 +33,6 @@ meta:
             v-model="query"
             :label="$t('users.table.search')"
             clearable
-            hide-details
             prepend-inner-icon="mdi-magnify"
             variant="outlined"
             @click:clear="onClearSearch"
@@ -50,6 +49,8 @@ meta:
               />
             </template>
           </v-text-field>
+
+          <SelectRole @update:model="onRoleUpdate" />
 
           <UserFormModal
             v-if="hasPermission('add', 'user')"
@@ -102,6 +103,7 @@ import { useAllUsers } from "@/graphql/composables/user";
 import type { UserNode } from "@/graphql/entities/user";
 import { useLocale } from "vuetify";
 import { useAppStore } from "@/stores/app";
+import { getOrderBy } from "@/lib/helpers";
 
 const { t } = useLocale();
 const { hasPermission } = useAppStore();
@@ -114,6 +116,7 @@ const {
   query,
   orderBy,
   itemsPerPage,
+  roleName,
   error,
 } = useAllUsers({
   keyParam: "",
@@ -157,27 +160,25 @@ function onClearSearch() {
   search();
 }
 
-function getOrderBy(key: string, order: "asc" | "desc") {
-  const orderByFields: Record<string, string> = {
-    email: "email",
-    firstName: "first_name",
-    isActive: "is_active",
-  };
-  const field = orderByFields[key];
-  return field ? `${order === "desc" ? "-" : ""}${field}` : undefined;
-}
-
 function onOptionsUpdate(options: {
   page: number;
   itemsPerPage: number;
   sortBy: { key: string; order: "asc" | "desc" }[];
 }) {
   const [sort] = options.sortBy;
-  const itemsPerPageChanged = itemsPerPage.value !== options.itemsPerPage;
-
-  itemsPerPage.value = options.itemsPerPage;
-  page.value = itemsPerPageChanged ? 1 : options.page;
   orderBy.value = sort ? getOrderBy(sort.key, sort.order) : undefined;
+
+  const itemsPerPageChanged = itemsPerPage.value !== options.itemsPerPage;
+  itemsPerPage.value = options.itemsPerPage;
+
+  page.value = itemsPerPageChanged ? 1 : options.page;
   load();
+}
+
+function onRoleUpdate(role: string | undefined) {
+  if (roleName) {
+    roleName.value = role;
+    load();
+  }
 }
 </script>
