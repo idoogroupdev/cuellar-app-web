@@ -52,6 +52,7 @@
         v-model="isActive.value.value"
         :error-messages="isActive.errorMessage.value"
         color="primary"
+        :disabled="user?.isSuperuser"
       />
 
       <v-btn
