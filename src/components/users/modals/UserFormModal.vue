@@ -26,7 +26,6 @@
           <UserForm
             :loading="loading"
             :user
-            :roles
             @submit="onSubmit"
             ref="userFormRef"
           />
@@ -49,7 +48,6 @@ import UserForm, {
   type UserFormValues,
   type UserFormErrors,
 } from "@/components/users/forms/UserForm.vue";
-import type { RoleNode } from "@/graphql/entities/roles";
 import type { UserNode } from "@/graphql/entities/user";
 import { useCreateUser, useUpdateUser } from "@/graphql/composables/user";
 import { normalizeApolloError } from "@/lib/helpers";
@@ -64,11 +62,9 @@ const emit = defineEmits<{
 const props = withDefaults(
   defineProps<{
     user?: UserNode | null;
-    roles: RoleNode[];
   }>(),
   {
     user: null,
-    roles: () => [],
   },
 );
 

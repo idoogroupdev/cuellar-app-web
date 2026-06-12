@@ -18,14 +18,9 @@
         prepend-inner-icon="$lock"
       />
 
-      <v-select
-        :label="$t('forms.role')"
+      <select-role
         v-model="roleName.value.value"
-        :items="roleItems"
-        item-title="title"
-        item-value="value"
         :error-messages="roleName.errorMessage.value"
-        prepend-inner-icon="mdi-account-key"
       />
 
       <v-row dense>
@@ -122,23 +117,15 @@ const props = withDefaults(
   defineProps<{
     loading: boolean;
     user?: UserNode | null;
-    roles: RoleNode[];
   }>(),
   {
     loading: false,
     user: null,
-    roles: () => [],
   },
 );
 
 const { t } = useLocale();
 const isEditing = computed(() => Boolean(props.user?.id));
-const roleItems = computed(() =>
-  props.roles.map((role) => ({
-    title: role.name,
-    value: role.name,
-  })),
-);
 
 const getInitialValues = () => ({
   email: props.user?.email ?? "",

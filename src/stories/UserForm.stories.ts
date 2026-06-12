@@ -7,18 +7,6 @@ const adminRole = {
   name: "ADMIN",
 };
 
-const roles = [
-  adminRole,
-  {
-    id: "2",
-    name: "SALESPERSON",
-  },
-  {
-    id: "3",
-    name: "CLIENT",
-  },
-];
-
 const user = {
   id: "1",
   email: "usuario@example.com",
@@ -45,14 +33,12 @@ type Story = StoryObj<typeof meta>;
 export const Create: Story = {
   args: {
     loading: false,
-    roles,
   },
 };
 
 export const Edit: Story = {
   args: {
     loading: false,
-    roles,
     user,
   },
 };
@@ -60,7 +46,6 @@ export const Edit: Story = {
 export const Loading: Story = {
   args: {
     loading: true,
-    roles,
     user,
   },
 };

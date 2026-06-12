@@ -53,7 +53,6 @@ meta:
 
           <UserFormModal
             v-if="hasPermission('add', 'user')"
-            :roles="roles"
             @saved="(user) => search()"
           />
         </div>
@@ -80,7 +79,6 @@ meta:
           <td>
             <UserFormModal
               v-if="hasPermission('change', 'user')"
-              :roles="roles"
               @saved="(user) => search()"
               :user="item"
             >
@@ -121,29 +119,6 @@ const {
   keyParam: "",
 });
 const itemsPerPageOptions = [10, 25, 50, 100];
-
-const roles = [
-  {
-    name: "OPERATOR",
-    id: "1",
-  },
-  {
-    name: "BRANCH_OPERATOR",
-    id: "2",
-  },
-  {
-    name: "ADMIN",
-    id: "3",
-  },
-  {
-    name: "SALESPERSON",
-    id: "4",
-  },
-  {
-    name: "DELIVERY_DRIVER",
-    id: "5",
-  },
-];
 
 const headers = computed(() => [
   {

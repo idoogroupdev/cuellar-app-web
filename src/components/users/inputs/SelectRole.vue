@@ -1,0 +1,43 @@
+<template>
+  <v-select
+    :label="$t('forms.role')"
+    v-model="model"
+    :items="roles"
+    item-title="title"
+    item-value="value"
+    :error-messages="errorMessages"
+    prepend-inner-icon="mdi-account-key"
+  />
+</template>
+<script setup lang="ts">
+const roles = [
+  {
+    value: "OPERATOR",
+    title: "OPERATOR",
+  },
+  {
+    value: "BRANCH_OPERATOR",
+    title: "BRANCH_OPERATOR",
+  },
+  {
+    value: "ADMIN",
+    title: "ADMIN",
+  },
+  {
+    value: "SALESPERSON",
+    title: "SALESPERSON",
+  },
+  {
+    value: "DELIVERY_DRIVER",
+    title: "DELIVERY_DRIVER",
+  },
+];
+
+export interface Props {
+  errorMessages?: string;
+}
+
+const props = withDefaults(defineProps<Props>(), {});
+
+const model = defineModel<string>("model");
+</script>
