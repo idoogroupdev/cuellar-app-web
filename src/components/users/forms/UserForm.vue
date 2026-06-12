@@ -53,7 +53,22 @@
         :error-messages="isActive.errorMessage.value"
         color="primary"
         :disabled="user?.isSuperuser"
-      />
+      >
+        <template #prepend>
+          <v-tooltip interactive>
+            <template v-slot:activator="{ props: activatorProps }">
+              <v-btn
+                icon="mdi-information-outline"
+                v-bind="activatorProps"
+                density="compact"
+                rounded="full"
+                variant="text"
+              ></v-btn>
+            </template>
+            <div>{{ $t("tooltip.deactivateUserAccessSystem") }}</div>
+          </v-tooltip>
+        </template>
+      </v-switch>
 
       <v-btn
         class="mt-3"

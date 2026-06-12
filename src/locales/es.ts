@@ -80,4 +80,8 @@ export default {
   sections: {
     users: "Usuarios",
   },
+  tooltip: {
+    deactivateUserAccessSystem:
+      "Si desactiva al usuario este perderá el acceso al sistema",
+  },
 };
