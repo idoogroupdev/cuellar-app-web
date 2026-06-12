@@ -36,6 +36,10 @@ const roles = [
     title: "DELIVERY_DRIVER",
   },
   {
+    value: "CLIENT",
+    title: "CLIENT",
+  },
+  {
     value: "",
     title: t("none"),
   },
