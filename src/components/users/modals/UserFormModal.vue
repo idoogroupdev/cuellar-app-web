@@ -63,20 +63,16 @@ const emit = defineEmits<{
 
 const props = withDefaults(
   defineProps<{
-    modelValue: boolean;
     user?: UserNode | null;
     roles: RoleNode[];
   }>(),
   {
-    modelValue: false,
     user: null,
     roles: () => [],
   },
 );
 
-const isOpen = defineModel<boolean>({
-  default: false,
-});
+const isOpen = ref(false);
 
 const { t } = useLocale();
 const messages = useMessagesStore();
