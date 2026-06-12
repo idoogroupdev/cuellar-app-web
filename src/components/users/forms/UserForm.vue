@@ -11,6 +11,7 @@
       />
 
       <v-text-field
+        v-if="!isEditing"
         :label="$t('forms.password')"
         type="password"
         v-model="password.value.value"
