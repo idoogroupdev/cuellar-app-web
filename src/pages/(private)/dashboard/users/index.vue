@@ -53,7 +53,6 @@ meta:
 
           <UserFormModal
             v-if="hasPermission('add', 'user')"
-            v-model="modalIsOpen"
             :roles="roles"
             @saved="(user) => search()"
           />
@@ -77,6 +76,23 @@ meta:
                   : $t("users.table.inactive")
               }}
             </v-chip>
+          </td>
+          <td>
+            <UserFormModal
+              v-if="hasPermission('change', 'user')"
+              :roles="roles"
+              @saved="(user) => search()"
+              :user="item"
+            >
+              <template #activator="{ props }">
+                <v-btn
+                  density="compact"
+                  icon="mdi-pencil"
+                  variant="text"
+                  v-bind="props"
+                />
+              </template>
+            </UserFormModal>
           </td>
         </tr>
       </template>
@@ -106,7 +122,6 @@ const {
 });
 const itemsPerPageOptions = [10, 25, 50, 100];
 
-const modalIsOpen = ref(false);
 const roles = [
   {
     name: "OPERATOR",
@@ -150,6 +165,9 @@ const headers = computed(() => [
     title: t("forms.isActive"),
     key: "isActive",
     sortable: true,
+  },
+  {
+    title: t("actions"),
   },
 ]);
 

@@ -3,6 +3,7 @@ export default {
   close: "Cerrar",
   back: "Atrás",
   page: "Página",
+  actions: "Acciones",
   forms: {
     email: "Correo electrónico",
     password: "Contraseña",
