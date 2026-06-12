@@ -6,10 +6,10 @@
           v-bind="activatorProps"
           :text="
             isEditing
-              ? $t('users.modals.user.createTitle')
+              ? $t('users.modals.user.editTitle')
               : $t('users.modals.user.createTitle')
           "
-          append-icon="mdi-plus"
+          :append-icon="isEditing ? 'mdi-pencil' : 'mdi-plus'"
         ></v-btn>
       </slot>
     </template>
