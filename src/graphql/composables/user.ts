@@ -2,7 +2,7 @@ import type {
   Pagination,
   CommonParams,
   ComposableQueryArgs,
-} from "@/graphql/composables/common";
+} from "@/graphql/entities/common";
 import type { UserNode } from "@/graphql/entities/user";
 import { CREATE_USER, UPDATE_USER } from "@/graphql/mutations/user";
 import { ALL_USERS } from "@/graphql/queries/user";
