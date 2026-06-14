@@ -7,7 +7,7 @@ import type { UserNode } from "@/graphql/entities/user";
 import { CREATE_USER, UPDATE_USER } from "@/graphql/mutations/user";
 import { ALL_USERS } from "@/graphql/queries/user";
 import { useMutation, useQuery } from "@vue/apollo-composable";
-import { PAGE_SIZE } from "@/graphql/composables/constants";
+import { PAGE_SIZE, DEFAULT_PAGINATION } from "@/graphql/composables/constants";
 import { useQueryParams } from "@/composables/useQueryParams";
 
 // All users
@@ -34,16 +34,7 @@ interface AllUsersQuery {
   };
 }
 
-const emptyAllUsers: AllUsersQuery["allUsers"] = {
-  edges: [],
-  pagination: {
-    totalCount: 0,
-    currentPage: 1,
-    totalPages: 0,
-    hasPreviousPage: false,
-    hasNextPage: false,
-  },
-};
+const emptyAllUsers: AllUsersQuery["allUsers"] = DEFAULT_PAGINATION;
 
 export function useAllUsers({
   updateRoute = true,
