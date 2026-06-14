@@ -63,7 +63,7 @@ meta:
         <tr class="text-no-wrap">
           <td>{{ item.email }}</td>
           <td>{{ getFullName(item) }}</td>
-          <td>{{ item.role?.name ?? "-" }}</td>
+          <td>{{ item.role?.name ? $t(`roles.${item.role.name}`) : "-" }}</td>
           <td>
             <v-chip
               :color="item.isActive ? 'success' : 'grey'"

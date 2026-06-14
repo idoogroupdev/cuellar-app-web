@@ -5,6 +5,7 @@ export default {
   page: "Página",
   actions: "Acciones",
   none: "Ninguno",
+  all: "Todos",
   forms: {
     email: "Correo electrónico",
     password: "Contraseña",
@@ -84,5 +85,13 @@ export default {
   tooltip: {
     deactivateUserAccessSystem:
       "Si desactiva al usuario este perderá el acceso al sistema",
+  },
+  roles: {
+    OPERATOR: "Operador",
+    BRANCH_OPERATOR: "Operador de sucursal",
+    ADMIN: "Administrador",
+    SALESPERSON: "Ventas",
+    DELIVERY_DRIVER: "Conductor de entrega",
+    CLIENT: "Cliente",
   },
 };

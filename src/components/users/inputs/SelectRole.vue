@@ -14,36 +14,38 @@ import { useLocale } from "vuetify";
 
 const { t } = useLocale();
 
-const roles = [
-  {
-    value: "OPERATOR",
-    title: "OPERATOR",
-  },
-  {
-    value: "BRANCH_OPERATOR",
-    title: "BRANCH_OPERATOR",
-  },
-  {
-    value: "ADMIN",
-    title: "ADMIN",
-  },
-  {
-    value: "SALESPERSON",
-    title: "SALESPERSON",
-  },
-  {
-    value: "DELIVERY_DRIVER",
-    title: "DELIVERY_DRIVER",
-  },
-  {
-    value: "CLIENT",
-    title: "CLIENT",
-  },
-  {
-    value: "",
-    title: t("none"),
-  },
-];
+const roles = computed(() => {
+  return [
+    {
+      value: "OPERATOR",
+      title: t("roles.OPERATOR"),
+    },
+    {
+      value: "BRANCH_OPERATOR",
+      title: t("roles.BRANCH_OPERATOR"),
+    },
+    {
+      value: "ADMIN",
+      title: t("roles.ADMIN"),
+    },
+    {
+      value: "SALESPERSON",
+      title: t("roles.SALESPERSON"),
+    },
+    {
+      value: "DELIVERY_DRIVER",
+      title: t("roles.DELIVERY_DRIVER"),
+    },
+    {
+      value: "CLIENT",
+      title: t("roles.CLIENT"),
+    },
+    {
+      value: "",
+      title: t("all"),
+    },
+  ];
+});
 
 export interface Props {
   errorMessages?: string;
