@@ -5,8 +5,8 @@ import gql from "graphql-tag";
 export const ALL_BRANCHES = gql`
   ${BRANCH_FIELDS}
   ${PAGINATION}
-  query allUsers($first: Int, $offset: Int) {
-    allUsers(first: $first, offset: $offset) {
+  query allBranches($first: Int, $offset: Int) {
+    allBranches(first: $first, offset: $offset) {
       edges {
         cursor
         node {
