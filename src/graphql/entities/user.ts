@@ -1,3 +1,4 @@
+import type { BranchNode } from "@/graphql/entities/branch";
 import type { PermissionNode } from "@/graphql/entities/permission";
 import type { RoleNode } from "@/graphql/entities/roles";
 
@@ -13,4 +14,5 @@ export interface UserNode {
   role: RoleNode | null;
   isVerified: boolean;
   permissions: PermissionNode[];
+  branch: BranchNode | null;
 }

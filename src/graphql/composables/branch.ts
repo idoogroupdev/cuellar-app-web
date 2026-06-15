@@ -14,6 +14,7 @@ import type {
 export interface AllBranchesQueryVariables {
   first?: number;
   offset?: number;
+  isActive?: boolean;
 }
 
 interface BranchEdge {
@@ -34,12 +35,18 @@ export function useAllBranches({
   updateRoute = true,
   limit = PAGE_SIZE,
   keyParam = "allBranches",
+  isActive = null,
 }: ComposableQueryArgs = {}) {
-  const defaults: CommonParams = {
+  interface AllBranchesQueryParams extends CommonParams {
+    isActive?: boolean;
+  }
+
+  const defaults: AllBranchesQueryParams = {
     page: 1,
     itemsPerPage: limit,
     query: undefined,
     orderBy: undefined,
+    isActive: isActive,
   };
 
   const queryParams = useQueryParams();
@@ -50,6 +57,7 @@ export function useAllBranches({
     return {
       first: state.value.itemsPerPage,
       offset: (state.value.page - 1) * state.value.itemsPerPage,
+      isActive: state.value.isActive,
     };
   }
 

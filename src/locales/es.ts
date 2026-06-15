@@ -6,6 +6,7 @@ export default {
   actions: "Acciones",
   none: "Ninguno",
   all: "Todos",
+  showMoreOptions: "Mostrar más opciones",
   forms: {
     email: "Correo electrónico",
     password: "Contraseña",

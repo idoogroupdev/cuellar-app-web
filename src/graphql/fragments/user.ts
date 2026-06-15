@@ -10,6 +10,7 @@ export const USER_FIELDS = gql`
     isSuperuser
     isVerified
     lastName
+    username
     permissions {
       codename
       id
@@ -18,6 +19,11 @@ export const USER_FIELDS = gql`
       id
       name
     }
-    username
+    branch {
+      id
+      name
+      address
+      isActive
+    }
   }
 `;

@@ -7,6 +7,7 @@ export interface Pagination {
 }
 
 export interface ComposableQueryArgs {
+  [key: string]: any;
   updateRoute?: boolean;
   limit?: number;
   keyParam?: string;
