@@ -100,6 +100,7 @@ const onSubmit = async (values: UserFormValues) => {
           firstName: values.firstName,
           lastName: values.lastName,
           isActive: values.isActive,
+          branchId: values.branchId,
         },
       })
     : await createUser({
@@ -110,6 +111,7 @@ const onSubmit = async (values: UserFormValues) => {
           firstName: values.firstName,
           lastName: values.lastName,
           isActive: values.isActive,
+          branchId: values.branchId,
         },
       });
 

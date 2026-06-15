@@ -24,6 +24,12 @@
         :error-messages="roleName.errorMessage.value"
       />
 
+      <select-branch
+        v-if="roleName.value.value === 'BRANCH_OPERATOR'"
+        v-model="branchId.value.value"
+        :error-messages="branchId.errorMessage.value"
+      />
+
       <v-row dense>
         <v-col cols="12" md="6">
           <v-text-field
@@ -84,7 +90,6 @@
 </template>
 
 <script setup lang="ts">
-import type { RoleNode } from "@/graphql/entities/roles";
 import type { UserNode } from "@/graphql/entities/user";
 import * as z from "zod";
 import { computed, watch } from "vue";
@@ -99,6 +104,7 @@ export interface UserFormValues {
   firstName: string;
   lastName: string;
   isActive: boolean;
+  branchId?: string;
 }
 
 export interface UserFormErrors {
@@ -108,6 +114,7 @@ export interface UserFormErrors {
   firstName?: string;
   lastName?: string;
   isActive?: string;
+  branchId?: string;
 }
 
 const emit = defineEmits<{
@@ -135,6 +142,7 @@ const getInitialValues = () => ({
   firstName: props.user?.firstName ?? "",
   lastName: props.user?.lastName ?? "",
   isActive: props.user?.isActive ?? true,
+  branchId: props.user?.branch?.id ?? undefined,
 });
 
 const UserFormSchema = z
@@ -145,6 +153,7 @@ const UserFormSchema = z
     firstName: z.string().min(1),
     lastName: z.string().min(1),
     isActive: z.boolean(),
+    branchId: z.string().optional(),
   })
   .superRefine((data, ctx) => {
     if (!isEditing.value && data.password.length < 8) {
@@ -175,6 +184,7 @@ const roleName = useField<string>("roleName");
 const firstName = useField<string>("firstName");
 const lastName = useField<string>("lastName");
 const isActive = useField<boolean>("isActive");
+const branchId = useField<boolean>("branchId");
 
 watch(
   () => props.user,
@@ -196,6 +206,7 @@ const submit = handleSubmit((values, actions) => {
     firstName: values.firstName,
     lastName: values.lastName,
     isActive: values.isActive,
+    branchId: values.branchId,
   });
 });
 </script>
