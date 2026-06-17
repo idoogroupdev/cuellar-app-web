@@ -1,6 +1,7 @@
 import type { PermissionNode } from "@/graphql/entities/permission";
 import type { UserNode } from "@/graphql/entities/user";
 import { defineStore } from "pinia";
+import type { RoleName } from "@/graphql/entities/roles";
 
 export type PermissionsType = "view" | "add" | "change" | "delete";
 
@@ -28,14 +29,20 @@ export const useAppStore = defineStore(
       passwdRecoveryEmail.value = email;
     }
 
-    function hasPermission(permission: PermissionsType, section: SectionType) {
+    function hasPermission(
+      permission: PermissionsType,
+      section: SectionType,
+      role?: RoleName,
+    ) {
       const requestPermission = `${permission}_${section}`;
 
       const has_permission = permissions.value.some(
         (p) => p.codename === requestPermission,
       );
 
-      return has_permission;
+      const has_role = role ? user.value.role?.name === role : true;
+
+      return has_permission && has_role;
     }
 
     return {

@@ -133,8 +133,11 @@ type DrawerItemConfig = {
   title: string;
   to: string;
   route: string;
-  requiredPermission?: { permission: PermissionsType; section: SectionType };
-  requiredRole?: RoleName;
+  requiredPermission?: {
+    permission: PermissionsType;
+    section: SectionType;
+    role?: RoleName;
+  };
 };
 
 type DrawerSectionConfig = {
@@ -154,8 +157,11 @@ const drawerSectionConfig: DrawerSectionConfig[] = [
         title: "sections.users",
         to: "/dashboard/users/",
         route: "/(private)/dashboard/users/",
-        requiredPermission: { permission: "view", section: "user" },
-        requiredRole: "ADMIN",
+        requiredPermission: {
+          permission: "view",
+          section: "user",
+          role: "ADMIN",
+        },
       },
     ],
   },
@@ -168,11 +174,11 @@ const menu = computed(() => {
     const filteredItems = section.items.filter(
       (item) =>
         !item.requiredPermission ||
-        (hasPermission(
+        hasPermission(
           item.requiredPermission.permission,
           item.requiredPermission.section,
-        ) &&
-          user.role?.name === item.requiredRole),
+          item.requiredPermission.role,
+        ),
     );
 
     if (filteredItems.length === 0) {
