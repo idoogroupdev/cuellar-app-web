@@ -102,12 +102,13 @@ import type { PermissionsType, SectionType } from "@/stores/app";
 import { useAppStore } from "@/stores/app";
 import { useRoute, useRouter } from "vue-router";
 import { useLocale } from "vuetify";
+import type { RoleName } from "@/graphql/entities/roles";
 
 const { mutate: revokeToken, loading } = useRevokeRefreshToken();
 const { deleteCookies, refresh } = useAuthCookie();
 const router = useRouter();
 const route = useRoute();
-const { hasPermission } = useAppStore();
+const { hasPermission, user } = useAppStore();
 const { t } = useLocale();
 
 const drawer = ref(true);
@@ -133,6 +134,7 @@ type DrawerItemConfig = {
   to: string;
   route: string;
   requiredPermission?: { permission: PermissionsType; section: SectionType };
+  requiredRole?: RoleName;
 };
 
 type DrawerSectionConfig = {
@@ -153,6 +155,7 @@ const drawerSectionConfig: DrawerSectionConfig[] = [
         to: "/dashboard/users/",
         route: "/(private)/dashboard/users/",
         requiredPermission: { permission: "view", section: "user" },
+        requiredRole: "ADMIN",
       },
     ],
   },
@@ -165,10 +168,11 @@ const menu = computed(() => {
     const filteredItems = section.items.filter(
       (item) =>
         !item.requiredPermission ||
-        hasPermission(
+        (hasPermission(
           item.requiredPermission.permission,
           item.requiredPermission.section,
-        ),
+        ) &&
+          user.role?.name === item.requiredRole),
     );
 
     if (filteredItems.length === 0) {
