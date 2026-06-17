@@ -39,6 +39,9 @@ export default {
       },
     },
   },
+  branches: {
+    select: "Seleccionar sucursal",
+  },
   auth: {
     forms: {
       login: {

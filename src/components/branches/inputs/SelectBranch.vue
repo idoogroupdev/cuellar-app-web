@@ -1,6 +1,6 @@
 <template>
   <v-select
-    label="Select"
+    :label="$t('branches.select')"
     :items="branches"
     item-title="name"
     item-value="id"
