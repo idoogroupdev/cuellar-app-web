@@ -108,7 +108,7 @@ const { mutate: revokeToken, loading } = useRevokeRefreshToken();
 const { deleteCookies, refresh } = useAuthCookie();
 const router = useRouter();
 const route = useRoute();
-const { hasPermission, user } = useAppStore();
+const { hasPermission } = useAppStore();
 const { t } = useLocale();
 
 const drawer = ref(true);
