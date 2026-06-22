@@ -11,6 +11,7 @@ export const USER_FIELDS = gql`
     isVerified
     lastName
     username
+    phone
     permissions {
       codename
       id

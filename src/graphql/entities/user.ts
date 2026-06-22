@@ -15,4 +15,5 @@ export interface UserNode {
   isVerified: boolean;
   permissions: PermissionNode[];
   branch: BranchNode | null;
+  phone: string | null;
 }
