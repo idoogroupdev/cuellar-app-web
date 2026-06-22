@@ -15,6 +15,7 @@ export default {
     isActive: "Activo",
     firstName: "Nombre",
     lastName: "Apellido",
+    phone: "Teléfono",
   },
   users: {
     table: {
