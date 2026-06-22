@@ -19,6 +19,7 @@ const user = {
   isVerified: true,
   role: adminRole,
   permissions: [],
+  branch: null,
 };
 
 const meta = {
