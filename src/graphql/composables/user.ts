@@ -9,6 +9,7 @@ import { ALL_USERS } from "@/graphql/queries/user";
 import { useMutation, useQuery } from "@vue/apollo-composable";
 import { PAGE_SIZE, DEFAULT_PAGINATION } from "@/graphql/composables/constants";
 import { useQueryParams } from "@/composables/useQueryParams";
+import type { RoleName } from "@/graphql/entities/roles";
 
 // All users
 
@@ -18,7 +19,7 @@ export interface AllUsersQueryVariables {
   email_Icontains?: string;
   firstName_Icontains?: string;
   lastName_Icontains?: string;
-  role_Name?: string;
+  role_Name?: RoleName;
   orderBy?: string;
 }
 
@@ -40,6 +41,7 @@ export function useAllUsers({
   updateRoute = true,
   limit = PAGE_SIZE,
   keyParam = "allUsers",
+  roleName = undefined,
 }: ComposableQueryArgs = {}) {
   interface AllUsersQueryParams extends CommonParams {
     roleName?: string;
@@ -50,7 +52,7 @@ export function useAllUsers({
     itemsPerPage: limit,
     query: undefined,
     orderBy: undefined,
-    roleName: undefined,
+    roleName: roleName,
   };
 
   const queryParams = useQueryParams();
