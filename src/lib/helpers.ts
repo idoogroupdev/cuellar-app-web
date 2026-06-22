@@ -1,3 +1,4 @@
+import type { UserNode } from "@/graphql/entities/user";
 import type { GraphQLFormattedError } from "graphql";
 
 type FieldErrors = Record<string, string>;
@@ -34,4 +35,8 @@ export function isNumeric(str: string): boolean {
 
 export function getOrderBy(key: string, order: "asc" | "desc") {
   return key ? `${order === "desc" ? "-" : ""}${key}` : undefined;
+}
+
+export function getFullName(user: UserNode) {
+  return [user.firstName, user.lastName].filter(Boolean).join(" ") || "-";
 }
