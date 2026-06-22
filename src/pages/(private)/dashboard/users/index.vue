@@ -3,100 +3,94 @@ meta:
   layout: dashboard
 </route>
 <template>
-  <div class="pa-6">
-    <div class="d-flex align-center justify-space-between mb-6 ga-4">
-      <div>
-        <h1 class="text-h5 font-weight-bold">{{ $t("sections.users") }}</h1>
-      </div>
-    </div>
+  <h1 class="text-h5 font-weight-bold mb-6 pa-4">
+    {{ $t("sections.users") }}
+  </h1>
 
-    <v-alert v-if="error" type="error" class="mb-6" :text="error.message" />
+  <v-alert v-if="error" type="error" class="mb-6" :text="error.message" />
 
-    <v-data-table-server
-      v-model:page="page"
-      :headers="headers"
-      :items="users"
-      :loading="loading"
-      :items-per-page="itemsPerPage"
-      :items-per-page-options="itemsPerPageOptions"
-      item-value="id"
-      density="comfortable"
-      @update:options="onOptionsUpdate"
-      :no-data-text="$t('users.table.empty')"
-      :items-length="allUsers.pagination.totalCount"
-    >
-      <template #top>
-        <div
-          class="d-flex flex-column flex-sm-row justify-space-between ga-4 pa-4"
+  <v-data-table-server
+    v-model:page="page"
+    :headers="headers"
+    :items="users"
+    :loading="loading"
+    :items-per-page="itemsPerPage"
+    :items-per-page-options="itemsPerPageOptions"
+    item-value="id"
+    density="comfortable"
+    @update:options="onOptionsUpdate"
+    :no-data-text="$t('users.table.empty')"
+    :items-length="allUsers.pagination.totalCount"
+  >
+    <template #top>
+      <div
+        class="d-flex flex-column flex-sm-row justify-space-between ga-4 pa-4"
+      >
+        <v-text-field
+          v-model="query"
+          :label="$t('users.table.search')"
+          clearable
+          prepend-inner-icon="mdi-magnify"
+          variant="outlined"
+          @click:clear="onClearSearch"
+          @keyup.enter="search"
         >
-          <v-text-field
-            v-model="query"
-            :label="$t('users.table.search')"
-            clearable
-            prepend-inner-icon="mdi-magnify"
-            variant="outlined"
-            @click:clear="onClearSearch"
-            @keyup.enter="search"
+          <template #append-inner>
+            <v-btn
+              :loading="loading"
+              density="comfortable"
+              icon="mdi-arrow-right"
+              size="small"
+              variant="text"
+              @click="search"
+            />
+          </template>
+        </v-text-field>
+
+        <SelectRole @update:model="onRoleUpdate" />
+
+        <UserFormModal
+          v-if="hasPermission('add', 'user')"
+          @saved="(user) => search()"
+        />
+      </div>
+    </template>
+
+    <template v-slot:item="{ item }">
+      <tr class="text-no-wrap">
+        <td>{{ item.email }}</td>
+        <td>{{ getFullName(item) }}</td>
+        <td>{{ item.role?.name ? $t(`roles.${item.role.name}`) : "-" }}</td>
+        <td>
+          <v-chip
+            :color="item.isActive ? 'success' : 'grey'"
+            size="small"
+            variant="tonal"
           >
-            <template #append-inner>
+            {{
+              item.isActive ? $t("forms.isActive") : $t("users.table.inactive")
+            }}
+          </v-chip>
+        </td>
+        <td>
+          <UserFormModal
+            v-if="hasPermission('change', 'user')"
+            @saved="(user) => search()"
+            :user="item"
+          >
+            <template #activator="{ props }">
               <v-btn
-                :loading="loading"
-                density="comfortable"
-                icon="mdi-arrow-right"
-                size="small"
+                density="compact"
+                icon="mdi-pencil"
                 variant="text"
-                @click="search"
+                v-bind="props"
               />
             </template>
-          </v-text-field>
-
-          <SelectRole @update:model="onRoleUpdate" />
-
-          <UserFormModal
-            v-if="hasPermission('add', 'user')"
-            @saved="(user) => search()"
-          />
-        </div>
-      </template>
-
-      <template v-slot:item="{ item }">
-        <tr class="text-no-wrap">
-          <td>{{ item.email }}</td>
-          <td>{{ getFullName(item) }}</td>
-          <td>{{ item.role?.name ? $t(`roles.${item.role.name}`) : "-" }}</td>
-          <td>
-            <v-chip
-              :color="item.isActive ? 'success' : 'grey'"
-              size="small"
-              variant="tonal"
-            >
-              {{
-                item.isActive
-                  ? $t("forms.isActive")
-                  : $t("users.table.inactive")
-              }}
-            </v-chip>
-          </td>
-          <td>
-            <UserFormModal
-              v-if="hasPermission('change', 'user')"
-              @saved="(user) => search()"
-              :user="item"
-            >
-              <template #activator="{ props }">
-                <v-btn
-                  density="compact"
-                  icon="mdi-pencil"
-                  variant="text"
-                  v-bind="props"
-                />
-              </template>
-            </UserFormModal>
-          </td>
-        </tr>
-      </template>
-    </v-data-table-server>
-  </div>
+          </UserFormModal>
+        </td>
+      </tr>
+    </template>
+  </v-data-table-server>
 </template>
 <script lang="ts" setup>
 import { useAllUsers } from "@/graphql/composables/user";
