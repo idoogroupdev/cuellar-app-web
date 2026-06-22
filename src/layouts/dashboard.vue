@@ -136,7 +136,7 @@ type DrawerItemConfig = {
   requiredPermission?: {
     permission: PermissionsType;
     section: SectionType;
-    role?: RoleName;
+    roles?: RoleName[];
   };
 };
 
@@ -160,7 +160,7 @@ const drawerSectionConfig: DrawerSectionConfig[] = [
         requiredPermission: {
           permission: "view",
           section: "user",
-          role: "ADMIN",
+          roles: ["ADMIN"],
         },
       },
     ],
@@ -177,7 +177,7 @@ const menu = computed(() => {
         hasPermission(
           item.requiredPermission.permission,
           item.requiredPermission.section,
-          item.requiredPermission.role,
+          item.requiredPermission.roles,
         ),
     );
 

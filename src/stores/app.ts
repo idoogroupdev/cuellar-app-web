@@ -32,7 +32,7 @@ export const useAppStore = defineStore(
     function hasPermission(
       permission: PermissionsType,
       section: SectionType,
-      role?: RoleName,
+      roles?: RoleName[],
     ) {
       const requestPermission = `${permission}_${section}`;
 
@@ -40,7 +40,9 @@ export const useAppStore = defineStore(
         (p) => p.codename === requestPermission,
       );
 
-      const has_role = role ? user.value.role?.name === role : true;
+      const has_role = roles
+        ? roles.some((role) => user.value.role?.name === role)
+        : true;
 
       return has_permission && has_role;
     }

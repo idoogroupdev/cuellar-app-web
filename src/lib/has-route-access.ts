@@ -6,7 +6,7 @@ export function hasRouteAccess() {
   const { hasPermission } = useAppStore();
 
   if (route.name == "/(private)/dashboard/users/") {
-    return hasPermission("view", "user", "ADMIN");
+    return hasPermission("view", "user", ["ADMIN"]);
   }
 
   return true;
