@@ -14,8 +14,19 @@ import { useLocale } from "vuetify";
 
 const { t } = useLocale();
 
+export interface Props {
+  errorMessages?: string;
+  skipOptions?: string[];
+}
+
+const props = withDefaults(defineProps<Props>(), {});
+
+const model = defineModel<string>("model", {
+  default: undefined,
+});
+
 const roles = computed(() => {
-  return [
+  const options = [
     {
       value: "OPERATOR",
       title: t("roles.OPERATOR"),
@@ -45,15 +56,7 @@ const roles = computed(() => {
       title: t("all"),
     },
   ];
-});
 
-export interface Props {
-  errorMessages?: string;
-}
-
-const props = withDefaults(defineProps<Props>(), {});
-
-const model = defineModel<string>("model", {
-  default: undefined,
+  return options.filter((role) => !props?.skipOptions?.includes(role.value));
 });
 </script>

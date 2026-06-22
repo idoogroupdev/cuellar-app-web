@@ -22,6 +22,7 @@
       <select-role
         v-model="roleName.value.value"
         :error-messages="roleName.errorMessage.value"
+        :skip-options="['CLIENT', '']"
       />
 
       <select-branch
