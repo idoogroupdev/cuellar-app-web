@@ -82,9 +82,11 @@ export default {
   breadcrumbs: {
     dashboard: "Panel",
     users: "Usuarios",
+    clients: "Clientes",
   },
   sections: {
     users: "Usuarios",
+    clients: "Clientes",
   },
   tooltip: {
     deactivateUserAccessSystem:

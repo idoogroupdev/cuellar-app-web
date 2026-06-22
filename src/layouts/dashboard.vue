@@ -23,35 +23,35 @@
               <v-icon :icon="section.icon" />
             </template>
             <template #title>
-              <span class="">
+              <span class="font-weight-light">
                 {{ section.title }}
               </span>
             </template>
           </v-list-item>
-          <!-- <v-list-group v-else fluid>
+          <v-list-group v-else fluid>
             <template #activator="{ props }">
               <v-list-item
-                :active="groupItem.active"
-                active-class="bg-grey-lighten-5"
+                :active="section.active"
+                active-class="bg-blue-darken-3"
                 v-bind="props"
                 density="compact"
                 rounded="lg"
               >
                 <template #prepend>
-                  <v-icon :icon="groupItem.icon" />
+                  <v-icon :icon="section.icon" />
                 </template>
                 <template #title>
                   <span class="font-weight-light">
-                    {{ groupItem.title }}
+                    {{ section.title }}
                   </span>
                 </template>
               </v-list-item>
             </template>
             <v-list-item
-              v-for="item in groupItem.items"
+              v-for="item in section.items"
               :key="item.title"
               :active="item.active"
-              active-class="bg-grey-darken-5"
+              active-class="bg-blue-darken-3"
               class="mt-1"
               density="compact"
               link
@@ -59,13 +59,13 @@
               @click="router.push(item.to)"
             >
               <template #prepend>
-                <v-icon icon="mdi-circle" size="24" />
+                <v-icon icon="mdi-circle" />
               </template>
               <span class="font-weight-light">
                 {{ item.title }}
               </span>
             </v-list-item>
-          </v-list-group> -->
+          </v-list-group>
         </div>
       </v-list>
       <template v-slot:append>
@@ -157,6 +157,16 @@ const drawerSectionConfig: DrawerSectionConfig[] = [
         title: "sections.users",
         to: "/dashboard/users/",
         route: "/(private)/dashboard/users/",
+        requiredPermission: {
+          permission: "view",
+          section: "user",
+          roles: ["ADMIN"],
+        },
+      },
+      {
+        title: "sections.clients",
+        to: "/dashboard/clients/",
+        route: "/(private)/dashboard/clients/",
         requiredPermission: {
           permission: "view",
           section: "user",

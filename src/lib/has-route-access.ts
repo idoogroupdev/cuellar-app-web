@@ -9,5 +9,9 @@ export function hasRouteAccess() {
     return hasPermission("view", "user", ["ADMIN"]);
   }
 
+  if (route.name == "/(private)/dashboard/clients/") {
+    return hasPermission("view", "user", ["ADMIN", "OPERATOR"]);
+  }
+
   return true;
 }
