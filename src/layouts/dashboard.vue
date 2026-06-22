@@ -24,7 +24,7 @@
             </template>
             <template #title>
               <span class="font-weight-light">
-                {{ section.title }}
+                {{ firstItem(section.items).title }}
               </span>
             </template>
           </v-list-item>
@@ -170,7 +170,7 @@ const drawerSectionConfig: DrawerSectionConfig[] = [
         requiredPermission: {
           permission: "view",
           section: "user",
-          roles: ["ADMIN"],
+          roles: ["ADMIN", "OPERATOR"],
         },
       },
     ],
@@ -210,13 +210,14 @@ const menu = computed(() => {
   return items;
 });
 
-function firstItem(items: DrawerItem[]) {
+function firstItem(items: DrawerItem[]): DrawerItem {
   const item = items[0];
 
   if (!items || !item)
     return {
       active: false,
       to: "#",
+      title: "-",
     };
 
   return item;
