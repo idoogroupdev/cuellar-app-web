@@ -3,8 +3,145 @@ meta:
   layout: dashboard
 </route>
 <template>
-  <h1>Building...</h1>
+  <h1 class="text-h5 font-weight-bold mb-6 pa-4">
+    {{ $t("sections.clients") }}
+  </h1>
+
+  <v-alert v-if="error" type="error" class="mb-6" :text="error.message" />
+
+  <v-data-table-server
+    v-model:page="page"
+    :headers="headers"
+    :items="clients"
+    :loading="loading"
+    :items-per-page="itemsPerPage"
+    :items-per-page-options="itemsPerPageOptions"
+    item-value="id"
+    density="comfortable"
+    @update:options="onOptionsUpdate"
+    :no-data-text="$t('users.table.empty')"
+    :items-length="allUsers.pagination.totalCount"
+  >
+    <template #top>
+      <div
+        class="d-flex flex-column flex-sm-row justify-space-between ga-4 pa-4"
+      >
+        <v-text-field
+          v-model="query"
+          :label="$t('users.table.search')"
+          clearable
+          prepend-inner-icon="mdi-magnify"
+          variant="outlined"
+          @click:clear="onClearSearch"
+          @keyup.enter="search"
+        >
+          <template #append-inner>
+            <v-btn
+              :loading="loading"
+              density="comfortable"
+              icon="mdi-arrow-right"
+              size="small"
+              variant="text"
+              @click="search"
+            />
+          </template>
+        </v-text-field>
+
+        <!-- <UserFormModal
+          v-if="hasPermission('add', 'user')"
+          @saved="(user) => search()"
+        /> -->
+      </div>
+    </template>
+
+    <template v-slot:item="{ item }">
+      <tr class="text-no-wrap">
+        <td>{{ item.email }}</td>
+        <td>{{ getFullName(item) }}</td>
+        <td>{{ item.phone }}</td>
+        <td>
+          <v-chip
+            :color="item.isActive ? 'success' : 'grey'"
+            size="small"
+            variant="tonal"
+          >
+            {{
+              item.isActive ? $t("forms.isActive") : $t("users.table.inactive")
+            }}
+          </v-chip>
+        </td>
+        <td>...</td>
+      </tr>
+    </template>
+  </v-data-table-server>
 </template>
 <script setup lang="ts">
-//
+import { useAllUsers } from "@/graphql/composables/user";
+import { useLocale } from "vuetify";
+import { getOrderBy, getFullName } from "@/lib/helpers";
+
+const { t } = useLocale();
+
+const itemsPerPageOptions = [10, 25, 50, 100];
+
+const headers = computed(() => [
+  {
+    title: t("forms.email"),
+    key: "email",
+    sortable: true,
+  },
+  {
+    title: t("users.table.name"),
+    key: "firstName",
+    sortable: true,
+  },
+  {
+    title: t("forms.phone"),
+    key: "phone",
+    sortable: false,
+  },
+  {
+    title: t("forms.isActive"),
+    key: "isActive",
+    sortable: true,
+  },
+  {
+    title: t("actions"),
+  },
+]);
+
+const {
+  allUsers,
+  loading,
+  load,
+  search,
+  page,
+  query,
+  orderBy,
+  itemsPerPage,
+  error,
+} = useAllUsers({
+  keyParam: "",
+  roleName: "CLIENT",
+});
+
+const clients = computed(() => allUsers.value.edges.map((edge) => edge.node));
+
+function onOptionsUpdate(options: {
+  page: number;
+  itemsPerPage: number;
+  sortBy: { key: string; order: "asc" | "desc" }[];
+}) {
+  const [sort] = options.sortBy;
+  orderBy.value = sort ? getOrderBy(sort.key, sort.order) : undefined;
+  const itemsPerPageChanged = itemsPerPage.value !== options.itemsPerPage;
+  itemsPerPage.value = options.itemsPerPage;
+  page.value = itemsPerPageChanged ? 1 : options.page;
+  load();
+}
+
+function onClearSearch() {
+  query.value = undefined;
+  search();
+}
 </script>
