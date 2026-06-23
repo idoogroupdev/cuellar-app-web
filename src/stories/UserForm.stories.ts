@@ -20,6 +20,7 @@ const user = {
   role: adminRole,
   permissions: [],
   branch: null,
+  phone: "+1111111111",
 };
 
 const meta = {
