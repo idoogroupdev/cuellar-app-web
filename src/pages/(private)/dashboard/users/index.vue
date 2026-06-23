@@ -94,10 +94,9 @@ meta:
 </template>
 <script lang="ts" setup>
 import { useAllUsers } from "@/graphql/composables/user";
-import type { UserNode } from "@/graphql/entities/user";
 import { useLocale } from "vuetify";
 import { useAppStore } from "@/stores/app";
-import { getOrderBy } from "@/lib/helpers";
+import { getOrderBy, getFullName } from "@/lib/helpers";
 
 const { t } = useLocale();
 const { hasPermission } = useAppStore();
@@ -144,10 +143,6 @@ const headers = computed(() => [
 ]);
 
 const users = computed(() => allUsers.value.edges.map((edge) => edge.node));
-
-function getFullName(user: UserNode) {
-  return [user.firstName, user.lastName].filter(Boolean).join(" ") || "-";
-}
 
 function onClearSearch() {
   query.value = undefined;
