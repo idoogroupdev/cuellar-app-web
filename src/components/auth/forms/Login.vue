@@ -1,6 +1,6 @@
 <template>
   <v-sheet class="mx-auto" width="350">
-    <v-img height="150" src="@/assets/logo-v2.png" />
+    <v-img height="150" src="@/assets/logo-v2.webp" />
     <div class="text-center mb-8">
       <h1 class="mb-1">{{ $t("auth.forms.login.title") }}</h1>
       <p class="text-grey-darken-2">

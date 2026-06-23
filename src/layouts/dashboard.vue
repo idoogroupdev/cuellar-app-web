@@ -4,7 +4,7 @@
       <v-list nav>
         <v-list-item>
           <div class="d-flex justify-center flex-column align-center">
-            <v-img width="120" src="@/assets/logo-v2.png" />
+            <v-img width="120" src="@/assets/logo-v2.webp" />
           </div>
         </v-list-item>
         <v-divider />
