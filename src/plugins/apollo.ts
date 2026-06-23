@@ -15,7 +15,11 @@ const httpLink = new HttpLink({
   uri: import.meta.env.VITE_API_URL,
 });
 
-const authLink = setContext((_, { headers }) => {
+const authLink = setContext((_, { headers, skipAuth }) => {
+  if (skipAuth) {
+    return { headers };
+  }
+
   const { token } = useAuthCookie();
   const authHeaders = token ? { Authorization: `JWT ${token}` } : {};
 

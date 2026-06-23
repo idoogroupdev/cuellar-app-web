@@ -24,7 +24,14 @@ const app = useAppStore();
 const { setCookie } = useAuthCookie();
 
 const onSubmit = (values: { email: string; password: string }) => {
-  login({ email: values.email, password: values.password });
+  login(
+    { email: values.email, password: values.password },
+    {
+      context: {
+        skipAuth: true,
+      },
+    },
+  );
 };
 
 onError((error) => {
