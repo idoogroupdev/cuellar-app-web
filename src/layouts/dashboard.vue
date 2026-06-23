@@ -143,7 +143,6 @@ type DrawerItemConfig = {
 type DrawerSectionConfig = {
   title: string;
   icon: string;
-  route: string;
   items: DrawerItemConfig[];
 };
 
@@ -151,7 +150,6 @@ const drawerSectionConfig: DrawerSectionConfig[] = [
   {
     title: "sections.users",
     icon: "mdi-account-group",
-    route: "/(private)/dashboard/users/",
     items: [
       {
         title: "sections.users",
@@ -195,10 +193,14 @@ const menu = computed(() => {
       continue;
     }
 
+    const sectionActive = filteredItems
+      .map((item) => item.route)
+      .some((value) => value === route.name);
+
     items.push({
       title: t(section.title),
       icon: section.icon,
-      active: route.name.includes(section.route),
+      active: sectionActive,
       items: filteredItems.map((item) => ({
         title: t(item.title),
         to: item.to,
