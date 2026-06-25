@@ -23,6 +23,8 @@ export default {
       inactive: "Inactivo",
       name: "Nombre",
       search: "Buscar por nombre, apellido o correo",
+      search2: "Buscar por nombre, apellido, correo o teléfono",
+      cashbackBalance: "Puntos",
     },
     modals: {
       user: {

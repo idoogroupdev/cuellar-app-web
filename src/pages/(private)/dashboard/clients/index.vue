@@ -28,7 +28,7 @@ meta:
       >
         <v-text-field
           v-model="query"
-          :label="$t('users.table.search')"
+          :label="$t('users.table.search2')"
           clearable
           prepend-inner-icon="mdi-magnify"
           variant="outlined"
@@ -59,6 +59,7 @@ meta:
         <td>{{ item.email }}</td>
         <td>{{ getFullName(item) }}</td>
         <td>{{ item.phone }}</td>
+        <td>{{ item.cashbackBalance }}</td>
         <td>
           <v-chip
             :color="item.isActive ? 'success' : 'grey'"
@@ -101,6 +102,11 @@ const headers = computed(() => [
     sortable: false,
   },
   {
+    title: t("users.table.cashbackBalance"),
+    key: "cashbackBalance",
+    sortable: false,
+  },
+  {
     title: t("forms.isActive"),
     key: "isActive",
     sortable: true,
@@ -123,6 +129,7 @@ const {
 } = useAllUsers({
   keyParam: "",
   roleName: "CLIENT",
+  skipWriteParams: ["roleName"],
 });
 
 const clients = computed(() => allUsers.value.edges.map((edge) => edge.node));

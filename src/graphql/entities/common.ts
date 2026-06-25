@@ -11,6 +11,7 @@ export interface ComposableQueryArgs {
   updateRoute?: boolean;
   limit?: number;
   keyParam?: string;
+  skipWriteParams?: string[];
 }
 
 interface PageAndOrderByParams {

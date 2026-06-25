@@ -16,4 +16,5 @@ export interface UserNode {
   permissions: PermissionNode[];
   branch: BranchNode | null;
   phone: string | null;
+  cashbackBalance: string;
 }

@@ -12,6 +12,7 @@ export const USER_FIELDS = gql`
     lastName
     username
     phone
+    cashbackBalance
     permissions {
       codename
       id

@@ -19,6 +19,7 @@ export interface AllUsersQueryVariables {
   email_Icontains?: string;
   firstName_Icontains?: string;
   lastName_Icontains?: string;
+  phone_Icontains?: string;
   role_Name?: RoleName;
   orderBy?: string;
 }
@@ -42,6 +43,7 @@ export function useAllUsers({
   limit = PAGE_SIZE,
   keyParam = "allUsers",
   roleName = undefined,
+  skipWriteParams = [],
 }: ComposableQueryArgs = {}) {
   interface AllUsersQueryParams extends CommonParams {
     roleName?: string;
@@ -60,7 +62,7 @@ export function useAllUsers({
   const state = ref(queryParams.read(keyParam, defaults));
 
   function getVariables(): AllUsersQueryVariables {
-    const query = state.value.query?.trim() || undefined;
+    const query = state.value.query ? String(state.value.query) : undefined;
 
     return {
       first: state.value.itemsPerPage,
@@ -68,6 +70,7 @@ export function useAllUsers({
       firstName_Icontains: query,
       lastName_Icontains: query,
       email_Icontains: query,
+      phone_Icontains: query,
       role_Name: state.value.roleName,
       orderBy: state.value.orderBy,
     };
@@ -84,7 +87,13 @@ export function useAllUsers({
 
   function load() {
     if (updateRoute) {
-      queryParams.write(keyParam, state.value);
+      const writableState = { ...state.value };
+
+      for (const paramName of skipWriteParams) {
+        delete (writableState as any)[paramName];
+      }
+
+      queryParams.write(keyParam, writableState);
     }
 
     queryReturn.refetch(getVariables());
