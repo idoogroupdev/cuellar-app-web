@@ -21,6 +21,7 @@ const user = {
   permissions: [],
   branch: null,
   phone: "+1111111111",
+  cashbackBalance: "0.00",
 };
 
 const meta = {
