@@ -13,6 +13,7 @@ declare module 'vue' {
   export interface GlobalComponents {
     AppFooter: typeof import('./components/AppFooter.vue')['default']
     Breadcrumbs: typeof import('./components/ui/Breadcrumbs.vue')['default']
+    ClientForm: typeof import('./components/users/forms/ClientForm.vue')['default']
     EmailIcon: typeof import('./components/iconsax/EmailIcon.vue')['default']
     LockIcon: typeof import('./components/iconsax/LockIcon.vue')['default']
     Login: typeof import('./components/auth/forms/Login.vue')['default']
