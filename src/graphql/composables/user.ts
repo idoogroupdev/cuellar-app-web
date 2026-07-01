@@ -123,6 +123,7 @@ export interface CreateUserInput {
   lastName: string;
   isActive: boolean;
   branchId?: string;
+  phone?: string;
 }
 
 interface CreateUserMutation {
@@ -151,6 +152,7 @@ export interface UpdateUserInput {
   lastName: string;
   isActive: boolean;
   branchId?: string;
+  phone?: string;
 }
 
 interface UpdateUserMutation {
