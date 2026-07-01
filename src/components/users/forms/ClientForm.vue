@@ -76,11 +76,7 @@
         append-icon="mdi-content-save"
         :loading
       >
-        {{
-          isEditing
-            ? $t("users.forms.user.update")
-            : $t("users.forms.user.create")
-        }}
+        {{ isEditing ? $t("forms.update") : $t("forms.create") }}
       </v-btn>
     </v-form>
   </v-sheet>

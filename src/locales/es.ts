@@ -16,6 +16,8 @@ export default {
     firstName: "Nombre",
     lastName: "Apellido",
     phone: "Teléfono",
+    create: "Crear",
+    update: "Guardar cambios",
   },
   users: {
     table: {
@@ -32,13 +34,20 @@ export default {
         editTitle: "Editar usuario",
         description: "Gestiona la información de acceso y perfil del usuario.",
       },
+      client: {
+        createTitle: "Crear cliente",
+        editTitle: "Editar cliente",
+        description: "Gestiona la información de acceso y perfil del cliente.",
+      },
     },
     forms: {
       user: {
-        create: "Crear",
-        update: "Guardar cambios",
         created: "Usuario creado correctamente",
         updated: "Usuario actualizado correctamente",
+      },
+      client: {
+        created: "Cliente creado correctamente",
+        updated: "Cliente actualizado correctamente",
       },
     },
   },
