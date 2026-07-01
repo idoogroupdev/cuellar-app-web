@@ -50,7 +50,7 @@ meta:
         <SelectRole @update:model="onRoleUpdate" />
 
         <UserFormModal
-          v-if="hasPermission('add', 'user')"
+          v-if="hasPermission('add', 'user', ['ADMIN'])"
           @saved="(user) => search()"
         />
       </div>
@@ -74,7 +74,7 @@ meta:
         </td>
         <td>
           <UserFormModal
-            v-if="hasPermission('change', 'user')"
+            v-if="hasPermission('change', 'user', ['ADMIN'])"
             @saved="(user) => search()"
             :user="item"
           >

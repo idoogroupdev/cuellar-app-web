@@ -47,10 +47,10 @@ meta:
           </template>
         </v-text-field>
 
-        <!-- <UserFormModal
-          v-if="hasPermission('add', 'user')"
+        <ClientFormModal
+          v-if="hasPermission('add', 'user', ['ADMIN', 'OPERATOR'])"
           @saved="(user) => search()"
-        /> -->
+        />
       </div>
     </template>
 
@@ -71,7 +71,22 @@ meta:
             }}
           </v-chip>
         </td>
-        <td>...</td>
+        <td>
+          <ClientFormModal
+            v-if="hasPermission('change', 'user', ['ADMIN', 'OPERATOR'])"
+            @saved="(user) => search()"
+            :user="item"
+          >
+            <template #activator="{ props }">
+              <v-btn
+                density="compact"
+                icon="mdi-pencil"
+                variant="text"
+                v-bind="props"
+              />
+            </template>
+          </ClientFormModal>
+        </td>
       </tr>
     </template>
   </v-data-table-server>
@@ -80,8 +95,10 @@ meta:
 import { useAllUsers } from "@/graphql/composables/user";
 import { useLocale } from "vuetify";
 import { getOrderBy, getFullName } from "@/lib/helpers";
+import { useAppStore } from "@/stores/app";
 
 const { t } = useLocale();
+const { hasPermission } = useAppStore();
 
 const itemsPerPageOptions = [10, 25, 50, 100];
 
