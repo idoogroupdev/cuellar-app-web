@@ -6,5 +6,6 @@ export const BRANCH_FIELDS = gql`
     id
     isActive
     name
+    isPickupEnabled
   }
 `;

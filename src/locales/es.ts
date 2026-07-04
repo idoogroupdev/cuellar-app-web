@@ -22,7 +22,9 @@ export default {
     update: "Guardar cambios",
     name: "Nombre",
     address: "Dirección",
-    isPickupEnabled: "Habilitar recogida",
+    isPickupEnabled: "Recogida habilitada",
+    pickupEnabled: "Habilitar recogida",
+    inactive: "Inactivo",
   },
   users: {
     table: {
@@ -59,6 +61,10 @@ export default {
   branches: {
     select: "Seleccionar sucursal",
     forms: {},
+    table: {
+      empty: "No hay sucursales para mostrar",
+      search: "Buscar por nombre",
+    },
   },
   auth: {
     forms: {

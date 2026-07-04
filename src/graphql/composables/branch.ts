@@ -15,6 +15,7 @@ export interface AllBranchesQueryVariables {
   first?: number;
   offset?: number;
   isActive?: boolean;
+  name_Icontains?: string;
 }
 
 interface BranchEdge {
@@ -58,6 +59,7 @@ export function useAllBranches({
       first: state.value.itemsPerPage,
       offset: (state.value.page - 1) * state.value.itemsPerPage,
       isActive: state.value.isActive,
+      name_Icontains: state.value.query,
     };
   }
 
