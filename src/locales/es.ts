@@ -20,6 +20,9 @@ export default {
     phone: "Teléfono",
     create: "Crear",
     update: "Guardar cambios",
+    name: "Nombre",
+    address: "Dirección",
+    isPickupEnabled: "Habilitar recogida",
   },
   users: {
     table: {
@@ -55,6 +58,7 @@ export default {
   },
   branches: {
     select: "Seleccionar sucursal",
+    forms: {},
   },
   auth: {
     forms: {
