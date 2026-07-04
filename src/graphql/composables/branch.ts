@@ -1,13 +1,14 @@
-import { type BranchNode } from "@/graphql/entities/branch";
-import { useQuery } from "@vue/apollo-composable";
-import { PAGE_SIZE, DEFAULT_PAGINATION } from "@/graphql/composables/constants";
 import { useQueryParams } from "@/composables/useQueryParams";
-import { ALL_BRANCHES } from "@/graphql/queries/branch";
+import { DEFAULT_PAGINATION, PAGE_SIZE } from "@/graphql/composables/constants";
+import { type BranchNode } from "@/graphql/entities/branch";
 import type {
-  Pagination,
   CommonParams,
   ComposableQueryArgs,
+  Pagination,
 } from "@/graphql/entities/common";
+import { CREATE_BRANCH, UPDATE_BRANCH } from "@/graphql/mutations/branch";
+import { ALL_BRANCHES } from "@/graphql/queries/branch";
+import { useMutation, useQuery } from "@vue/apollo-composable";
 
 // All branches
 
@@ -92,4 +93,55 @@ export function useAllBranches({
     load,
     search,
   };
+}
+
+// Create branch
+
+interface CreateBranchInput {
+  name: string;
+  address: string;
+  isActive: boolean;
+  isPickupEnabled: boolean;
+}
+
+interface CreateBranchMutation {
+  createBranch: {
+    branch: BranchNode;
+  };
+}
+
+interface CreateBranchMutationVariables {
+  input: CreateBranchInput;
+}
+
+export function useCreateBranch() {
+  return useMutation<CreateBranchMutation, CreateBranchMutationVariables>(
+    CREATE_BRANCH,
+  );
+}
+
+// Update branch
+
+interface UpdateBranchInput {
+  id: string;
+  name?: string;
+  address?: string;
+  isActive?: boolean;
+  isPickupEnabled?: boolean;
+}
+
+interface UpdateBranchMutation {
+  updateBranch: {
+    branch: BranchNode;
+  };
+}
+
+interface UpdateBranchMutationVariables {
+  input: UpdateBranchInput;
+}
+
+export function useUpdateBranch() {
+  return useMutation<UpdateBranchMutation, UpdateBranchMutationVariables>(
+    UPDATE_BRANCH,
+  );
 }
