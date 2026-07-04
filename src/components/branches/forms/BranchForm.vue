@@ -26,7 +26,7 @@
         </v-col>
         <v-col cols="12" md="6">
           <v-switch
-            :label="$t('forms.isPickupEnabled')"
+            :label="$t('forms.pickupEnabled')"
             v-model="isPickupEnabled.value.value"
             :error-messages="isPickupEnabled.errorMessage.value"
             color="primary"
