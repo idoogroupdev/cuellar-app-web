@@ -7,6 +7,8 @@ export default {
   none: "Ninguno",
   all: "Todos",
   showMoreOptions: "Mostrar más opciones",
+  dashboard: "Panel",
+  go: "Ir",
   forms: {
     email: "Correo electrónico",
     password: "Contraseña",
@@ -111,5 +113,11 @@ export default {
     SALESPERSON: "Ventas",
     DELIVERY_DRIVER: "Conductor de entrega",
     CLIENT: "Cliente",
+  },
+  home: {
+    manageUsers: `Gestiona los usuarios del sistema. Consulta el listado de usuarios registrados, 
+                  crea nuevas cuentas, actualiza la información existente y administra sus datos.`,
+    manageClients: `Gestiona los usuarios del sistema. Consulta el listado de usuarios registrados, 
+                    crea nuevas cuentas, actualiza la información existente y administra sus datos.`,
   },
 };

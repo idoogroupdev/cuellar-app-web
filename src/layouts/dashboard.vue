@@ -7,7 +7,6 @@
             <v-img width="120" src="@/assets/logo-v2.webp" />
           </div>
         </v-list-item>
-        <v-divider />
         <div v-for="section in menu" :key="section.title">
           <v-list-item
             v-if="section.items.length === 1"
@@ -18,6 +17,7 @@
             link
             rounded="lg"
             @click="router.push(firstItem(section.items).to)"
+            class="mt-1"
           >
             <template #prepend>
               <v-icon :icon="section.icon" />
@@ -28,7 +28,7 @@
               </span>
             </template>
           </v-list-item>
-          <v-list-group v-else fluid>
+          <v-list-group v-else fluid class="mt-1">
             <template #activator="{ props }">
               <v-list-item
                 :active="section.active"
@@ -147,6 +147,17 @@ type DrawerSectionConfig = {
 };
 
 const drawerSectionConfig: DrawerSectionConfig[] = [
+  {
+    title: "dashboard",
+    icon: "mdi-view-dashboard",
+    items: [
+      {
+        title: "dashboard",
+        to: "/dashboard/",
+        route: "/(private)/dashboard/",
+      },
+    ],
+  },
   {
     title: "sections.users",
     icon: "mdi-account-group",
