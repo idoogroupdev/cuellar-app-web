@@ -23,6 +23,7 @@ declare module 'vue-router/auto-routes' {
     '/(public)/forgot-password/check': RouteRecordInfo<'/(public)/forgot-password/check', '/forgot-password/check', Record<never, never>, Record<never, never>>,
     '/(public)/forgot-password/reset-password': RouteRecordInfo<'/(public)/forgot-password/reset-password', '/forgot-password/reset-password', Record<never, never>, Record<never, never>>,
     '/(private)/dashboard/': RouteRecordInfo<'/(private)/dashboard/', '/dashboard', Record<never, never>, Record<never, never>>,
+    '/(private)/dashboard/branches/': RouteRecordInfo<'/(private)/dashboard/branches/', '/dashboard/branches', Record<never, never>, Record<never, never>>,
     '/(private)/dashboard/clients/': RouteRecordInfo<'/(private)/dashboard/clients/', '/dashboard/clients', Record<never, never>, Record<never, never>>,
     '/(private)/dashboard/users/': RouteRecordInfo<'/(private)/dashboard/users/', '/dashboard/users', Record<never, never>, Record<never, never>>,
   }
@@ -56,6 +57,10 @@ declare module 'vue-router/auto-routes' {
     }
     'src/pages/(private)/dashboard/index.vue': {
       routes: '/(private)/dashboard/'
+      views: never
+    }
+    'src/pages/(private)/dashboard/branches/index.vue': {
+      routes: '/(private)/dashboard/branches/'
       views: never
     }
     'src/pages/(private)/dashboard/clients/index.vue': {

@@ -97,10 +97,12 @@ export default {
     dashboard: "Panel",
     users: "Usuarios",
     clients: "Clientes",
+    branches: "Sucursales",
   },
   sections: {
     users: "Usuarios",
     clients: "Clientes",
+    branches: "Sucursales",
   },
   tooltip: {
     deactivateUserAccessSystem:

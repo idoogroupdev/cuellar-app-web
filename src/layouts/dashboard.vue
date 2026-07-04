@@ -184,6 +184,22 @@ const drawerSectionConfig: DrawerSectionConfig[] = [
       },
     ],
   },
+  {
+    title: "sections.branches",
+    icon: "mdi-store",
+    items: [
+      {
+        title: "sections.branches",
+        to: "/dashboard/branches/",
+        route: "/(private)/dashboard/branches/",
+        requiredPermission: {
+          permission: "view",
+          section: "branch",
+          roles: ["ADMIN", "OPERATOR"],
+        },
+      },
+    ],
+  },
 ];
 
 const menu = computed(() => {
