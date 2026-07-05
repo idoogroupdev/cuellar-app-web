@@ -46,11 +46,10 @@ meta:
             />
           </template>
         </v-text-field>
-
-        <!-- <UserFormModal
-          v-if="hasPermission('add', 'user', ['ADMIN'])"
-          @saved="(user) => search()"
-        /> -->
+        <BranchFormModal
+          v-if="hasPermission('add', 'branch', ['ADMIN', 'OPERATOR'])"
+          @saved="(branch) => search()"
+        />
       </div>
     </template>
 
@@ -79,11 +78,10 @@ meta:
           </v-chip>
         </td>
         <td>
-          ...
-          <!-- <UserFormModal
-            v-if="hasPermission('change', 'user', ['ADMIN'])"
-            @saved="(user) => search()"
-            :user="item"
+          <BranchFormModal
+            v-if="hasPermission('change', 'branch', ['ADMIN', 'OPERATOR'])"
+            @saved="(branch) => search()"
+            :branch="item"
           >
             <template #activator="{ props }">
               <v-btn
@@ -93,7 +91,7 @@ meta:
                 v-bind="props"
               />
             </template>
-          </UserFormModal> -->
+          </BranchFormModal>
         </td>
       </tr>
     </template>
@@ -102,10 +100,12 @@ meta:
 <script setup lang="ts">
 import { useAllBranches } from "@/graphql/composables/branch";
 import { useLocale } from "vuetify";
+import { useAppStore } from "@/stores/app";
 
 const itemsPerPageOptions = [10, 25, 50, 100];
 
 const { t } = useLocale();
+const { hasPermission } = useAppStore();
 const { allBranches, error, page, loading, search, query, load, itemsPerPage } =
   useAllBranches({
     keyParam: "",

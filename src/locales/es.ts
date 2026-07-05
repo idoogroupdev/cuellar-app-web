@@ -60,10 +60,18 @@ export default {
   },
   branches: {
     select: "Seleccionar sucursal",
-    forms: {},
+    forms: {
+      created: "Sucursal creada correctamente",
+      updated: "Sucursal actualizada correctamente",
+    },
     table: {
       empty: "No hay sucursales para mostrar",
       search: "Buscar por nombre",
+    },
+    modals: {
+      editTitle: "Editar sucursal",
+      createTitle: "Crear sucursal",
+      description: "Gestiona la información de una sucursal",
     },
   },
   auth: {
