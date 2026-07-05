@@ -137,7 +137,11 @@ export default {
   home: {
     manageUsers: `Gestiona los usuarios del sistema. Consulta el listado de usuarios registrados, 
                   crea nuevas cuentas, actualiza la información existente y administra sus datos.`,
+
     manageClients: `Gestiona los usuarios del sistema. Consulta el listado de usuarios registrados, 
                     crea nuevas cuentas, actualiza la información existente y administra sus datos.`,
+
+    manageBranches: `Gestiona las sucursales del sistema. Consulta el listado de sucursales,
+                    crea nuevas sucursales, actualiza la información existente y administra sus datos`,
   },
 };
