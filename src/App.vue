@@ -4,10 +4,8 @@
     <v-snackbar-queue
       v-model="messages.queue"
       variant="tonal"
-      total-visible="5"
-      display-strategy="overflow"
-      closable
       :close-text="$t('close')"
+      location="top right"
     ></v-snackbar-queue>
   </v-app>
 </template>
