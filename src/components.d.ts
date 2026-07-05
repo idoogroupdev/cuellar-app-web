@@ -13,6 +13,7 @@ declare module 'vue' {
   export interface GlobalComponents {
     AppFooter: typeof import('./components/AppFooter.vue')['default']
     BranchForm: typeof import('./components/branches/forms/BranchForm.vue')['default']
+    BranchFormModal: typeof import('./components/branches/modals/BranchFormModal.vue')['default']
     Breadcrumbs: typeof import('./components/ui/Breadcrumbs.vue')['default']
     ClientForm: typeof import('./components/users/forms/ClientForm.vue')['default']
     ClientFormModal: typeof import('./components/users/modals/ClientFormModal.vue')['default']
