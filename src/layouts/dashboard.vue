@@ -59,7 +59,7 @@
               @click="router.push(item.to)"
             >
               <template #prepend>
-                <v-icon icon="mdi-circle" />
+                <v-icon icon="mdi-circle" size="15" />
               </template>
               <span class="font-weight-light">
                 {{ item.title }}
