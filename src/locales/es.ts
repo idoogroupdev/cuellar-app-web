@@ -9,6 +9,8 @@ export default {
   showMoreOptions: "Mostrar más opciones",
   dashboard: "Panel",
   go: "Ir",
+  add: "Agregar",
+  save: "Guardar",
   forms: {
     email: "Correo electrónico",
     password: "Contraseña",
@@ -63,6 +65,8 @@ export default {
     forms: {
       created: "Sucursal creada correctamente",
       updated: "Sucursal actualizada correctamente",
+      fromHour: "Desde",
+      toHour: "Hasta",
     },
     table: {
       empty: "No hay sucursales para mostrar",

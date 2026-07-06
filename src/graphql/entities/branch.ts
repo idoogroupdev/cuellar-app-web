@@ -6,9 +6,18 @@ export interface BranchNode {
   isPickupEnabled: boolean;
 }
 
+export type DayOfWeek =
+  | "MONDAY"
+  | "TUESDAY"
+  | "WEDNESDAY"
+  | "THURSDAY"
+  | "FRIDAY"
+  | "SATURDAY"
+  | "SUNDAY";
+
 export interface BranchHourNode {
   id: string;
-  dayOfWeek: string;
+  dayOfWeek: DayOfWeek | undefined;
   fromHour: string;
   toHour: string;
 }
