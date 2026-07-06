@@ -29,6 +29,7 @@ declare module 'vue' {
     SelectBranch: typeof import('./components/branches/inputs/SelectBranch.vue')['default']
     SelectDayOfWeek: typeof import('./components/branches/inputs/SelectDayOfWeek.vue')['default']
     SelectRole: typeof import('./components/users/inputs/SelectRole.vue')['default']
+    TimePicker: typeof import('./components/common/TimePicker.vue')['default']
     UserForm: typeof import('./components/users/forms/UserForm.vue')['default']
     UserFormModal: typeof import('./components/users/modals/UserFormModal.vue')['default']
   }
