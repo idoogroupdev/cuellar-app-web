@@ -14,11 +14,13 @@ type Story = StoryObj<typeof meta>;
 export const Create: Story = {
   args: {
     hours: [],
+    loading: false,
   },
 };
 
 export const Edit: Story = {
   args: {
+    loading: false,
     hours: [
       {
         id: "1",
