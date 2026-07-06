@@ -12,7 +12,7 @@ import { useLocale } from "vuetify";
 
 const { t } = useLocale();
 
-type DayOfWeek =
+export type DayOfWeek =
   | "MONDAY"
   | "TUESDAY"
   | "WEDNESDAY"
@@ -38,8 +38,14 @@ const items = computed(() => {
     { text: t("days.sunday"), value: "SUNDAY" },
   ];
 
-  return days.filter((day) => !props.disabledDays?.includes(day.value));
+  return days.map((item) => ({
+    ...item,
+    props: {
+      disabled:
+        props.disabledDays?.includes(item.value) && item.value !== day.value,
+    },
+  }));
 });
 
-const day = defineModel<string>("day", { type: String });
+const day = defineModel<string>({ type: String });
 </script>
