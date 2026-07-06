@@ -24,6 +24,6 @@ withDefaults(defineProps<Props>(), {
   label: "Select time",
 });
 
-const time = defineModel<string>("time", { type: String });
+const time = defineModel<string>({ type: String });
 const showMenu = ref(false);
 </script>
