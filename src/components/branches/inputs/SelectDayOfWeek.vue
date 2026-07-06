@@ -12,7 +12,7 @@ import { useLocale } from "vuetify";
 
 const { t } = useLocale();
 
-export type DayOfWeek =
+type DayOfWeek =
   | "MONDAY"
   | "TUESDAY"
   | "WEDNESDAY"
