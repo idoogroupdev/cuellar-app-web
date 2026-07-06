@@ -144,4 +144,14 @@ export default {
     manageBranches: `Gestiona las sucursales del sistema. Consulta el listado de sucursales,
                     crea nuevas sucursales, actualiza la información existente y administra sus datos`,
   },
+  days: {
+    label: "Día de la semana",
+    monday: "Lunes",
+    tuesday: "Martes",
+    wednesday: "Miércoles",
+    thursday: "Jueves",
+    friday: "Viernes",
+    saturday: "Sábado",
+    sunday: "Domingo",
+  },
 };
