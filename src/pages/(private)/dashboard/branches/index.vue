@@ -80,7 +80,8 @@ meta:
         <td>
           <BranchFormModal
             v-if="hasPermission('change', 'branch', ['ADMIN', 'OPERATOR'])"
-            @saved="(branch) => search()"
+            @saved="(branch) => search(page)"
+            @synced="(hours) => search(page)"
             :branch="item"
           >
             <template #activator="{ props }">
