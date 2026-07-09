@@ -1,12 +1,17 @@
 import { useQueryParams } from "@/composables/useQueryParams";
 import { DEFAULT_PAGINATION, PAGE_SIZE } from "@/graphql/composables/constants";
-import { type BranchNode } from "@/graphql/entities/branch";
+import type { BranchNode, BranchHourNode } from "@/graphql/entities/branch";
+import type { DayOfWeek } from "@/graphql/entities/branch";
 import type {
   CommonParams,
   ComposableQueryArgs,
   Pagination,
 } from "@/graphql/entities/common";
-import { CREATE_BRANCH, UPDATE_BRANCH } from "@/graphql/mutations/branch";
+import {
+  CREATE_BRANCH,
+  UPDATE_BRANCH,
+  SYNC_BRANCH_HOUR,
+} from "@/graphql/mutations/branch";
 import { ALL_BRANCHES } from "@/graphql/queries/branch";
 import { useMutation, useQuery } from "@vue/apollo-composable";
 
@@ -143,5 +148,34 @@ interface UpdateBranchMutationVariables {
 export function useUpdateBranch() {
   return useMutation<UpdateBranchMutation, UpdateBranchMutationVariables>(
     UPDATE_BRANCH,
+  );
+}
+
+// Sync branch hours
+
+export interface BranchHour {
+  dayOfWeek: DayOfWeek;
+  fromHour: string;
+  toHour: string;
+}
+
+interface SyncBranchHourInput {
+  branchId: string;
+  hours: BranchHour[];
+}
+
+interface SyncBranchHourMutation {
+  syncBranchHour: {
+    branchHours: BranchHourNode[];
+  };
+}
+
+interface SyncBranchHourMutationVariables {
+  input: SyncBranchHourInput;
+}
+
+export function useSyncBranchHour() {
+  return useMutation<SyncBranchHourMutation, SyncBranchHourMutationVariables>(
+    SYNC_BRANCH_HOUR,
   );
 }

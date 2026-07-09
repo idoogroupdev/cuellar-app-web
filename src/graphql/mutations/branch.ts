@@ -1,5 +1,5 @@
 import gql from "graphql-tag";
-import { BRANCH_FIELDS } from "@/graphql/fragments/branch";
+import { BRANCH_FIELDS, BRANCH_HOURS_FIELDS } from "@/graphql/fragments/branch";
 
 export const CREATE_BRANCH = gql`
   ${BRANCH_FIELDS}
@@ -18,6 +18,17 @@ export const UPDATE_BRANCH = gql`
     updateBranch(input: $input) {
       branch {
         ...BranchFields
+      }
+    }
+  }
+`;
+
+export const SYNC_BRANCH_HOUR = gql`
+  ${BRANCH_HOURS_FIELDS}
+  mutation syncBranchHour($input: SyncBranchHourInput!) {
+    syncBranchHour(input: $input) {
+      branchHours {
+        ...BranchHoursFields
       }
     }
   }
