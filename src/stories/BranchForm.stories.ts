@@ -26,6 +26,7 @@ export const Edit: Story = {
       address: "Test",
       isActive: false,
       isPickupEnabled: true,
+      branchHours: [],
     },
     loading: false,
   },
