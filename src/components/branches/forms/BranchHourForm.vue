@@ -1,7 +1,7 @@
 <template>
   <v-form @submit.prevent="submit" class="pa-4 border">
     <v-row v-for="item in days" :key="item.id" class="" size="7">
-      <v-col cols="5">
+      <v-col cols="4">
         <SelectDayOfWeek
           v-model="item.dayOfWeek"
           hide-details="auto"
