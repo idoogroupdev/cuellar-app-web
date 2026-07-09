@@ -57,6 +57,7 @@ export default createVuetify({
     },
     VAlert: {
       variant: "tonal",
+      density: "compact",
     },
     VSelect: {
       variant: "outlined",
