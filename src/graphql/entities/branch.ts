@@ -1,11 +1,3 @@
-export interface BranchNode {
-  id: string;
-  name: string;
-  address: string;
-  isActive: boolean;
-  isPickupEnabled: boolean;
-}
-
 export type DayOfWeek =
   | "MONDAY"
   | "TUESDAY"
@@ -20,4 +12,13 @@ export interface BranchHourNode {
   dayOfWeek: DayOfWeek | undefined;
   fromHour: string;
   toHour: string;
+}
+
+export interface BranchNode {
+  id: string;
+  name: string;
+  address: string;
+  isActive: boolean;
+  isPickupEnabled: boolean;
+  branchHours: BranchHourNode[];
 }
