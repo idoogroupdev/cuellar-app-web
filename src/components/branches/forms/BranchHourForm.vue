@@ -1,7 +1,7 @@
 <template>
-  <v-form @submit.prevent="submit">
-    <v-row v-for="item in days" :key="item.id">
-      <v-col>
+  <v-form @submit.prevent="submit" class="pa-4 border">
+    <v-row v-for="item in days" :key="item.id" class="" size="7">
+      <v-col cols="5">
         <SelectDayOfWeek
           v-model="item.dayOfWeek"
           hide-details="auto"
@@ -24,10 +24,10 @@
           hide-details="auto"
         />
       </v-col>
-      <v-col>
+      <v-col cols="1" class="d-flex justify-center align-center">
         <v-btn
           density="compact"
-          icon="mdi-close"
+          icon="mdi-delete-outline"
           variant="text"
           @click="removeDay(Number(item.id))"
           :disabled="days.length === 1"
