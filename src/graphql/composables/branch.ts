@@ -86,8 +86,8 @@ export function useAllBranches({
     queryReturn.refetch(getVariables());
   }
 
-  function search() {
-    state.value.page = 1;
+  function search(page: number = 1) {
+    state.value.page = page;
     load();
   }
 
