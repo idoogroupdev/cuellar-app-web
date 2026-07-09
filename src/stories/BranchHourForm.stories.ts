@@ -37,3 +37,11 @@ export const Edit: Story = {
     ],
   },
 };
+
+export const Error: Story = {
+  args: {
+    hours: [],
+    loading: false,
+    error: "Error",
+  },
+};
