@@ -107,7 +107,7 @@ watch(
       days.value = [initialDay];
       return;
     }
-    days.value = hours;
+    days.value = [...hours];
   },
   {
     immediate: true,
