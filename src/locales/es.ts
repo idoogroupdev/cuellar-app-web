@@ -11,6 +11,8 @@ export default {
   go: "Ir",
   add: "Agregar",
   save: "Guardar",
+  information: "Información",
+  workingHours: "Horario de trabajo",
   forms: {
     email: "Correo electrónico",
     password: "Contraseña",
