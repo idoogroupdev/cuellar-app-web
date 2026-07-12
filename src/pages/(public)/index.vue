@@ -10,7 +10,7 @@
 
 <script lang="ts" setup>
 import { useAuthCookie } from "@/composables/useAuthCookie";
-import { useLogin } from "@/graphql/composables/auth";
+import { useLogin } from "@/graphql/auth/composables";
 import { useAppStore } from "@/stores/app";
 import { useMessagesStore } from "@/stores/messages";
 import { useRouter } from "vue-router";

@@ -12,7 +12,7 @@
   </v-container>
 </template>
 <script setup lang="ts">
-import { useResetPassword } from "@/graphql/composables/auth";
+import { useResetPassword } from "@/graphql/auth/composables";
 import { useRouter } from "vue-router";
 import { normalizeApolloError } from "@/lib/helpers";
 

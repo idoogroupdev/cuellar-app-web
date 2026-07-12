@@ -15,7 +15,7 @@ import { useAuthCookie } from "@/composables/useAuthCookie";
 import {
   useRequestAuthCode,
   useVerifyAuthCode,
-} from "@/graphql/composables/auth";
+} from "@/graphql/auth/composables";
 import { useAppStore } from "@/stores/app";
 import { useMessagesStore } from "@/stores/messages";
 import { useRouter } from "vue-router";

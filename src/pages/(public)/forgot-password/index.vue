@@ -6,7 +6,7 @@
   </v-container>
 </template>
 <script setup lang="ts">
-import { useRequestAuthCode } from "@/graphql/composables/auth";
+import { useRequestAuthCode } from "@/graphql/auth/composables";
 import { useMessagesStore } from "@/stores/messages";
 import { useAppStore } from "@/stores/app";
 import { useRouter } from "vue-router";

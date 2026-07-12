@@ -1,4 +1,4 @@
-import type { BranchNode } from "@/graphql/entities/branch";
+import type { BranchNode } from "@/graphql/branch/entities";
 import type { PermissionNode } from "@/graphql/entities/permission";
 import type { RoleNode } from "@/graphql/entities/roles";
 

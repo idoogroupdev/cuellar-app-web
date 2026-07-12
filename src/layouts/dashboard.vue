@@ -96,7 +96,7 @@
 </template>
 <script lang="ts" setup>
 import { useAuthCookie } from "@/composables/useAuthCookie";
-import { useRevokeRefreshToken } from "@/graphql/composables/auth";
+import { useRevokeRefreshToken } from "@/graphql/auth/composables";
 import { hasRouteAccess } from "@/lib/has-route-access";
 import type { PermissionsType, SectionType } from "@/stores/app";
 import { useAppStore } from "@/stores/app";

@@ -5,7 +5,7 @@ import {
   REQUEST_AUTH_CODE,
   VERIFY_AUTH_CODE,
   RESET_PASSWORD,
-} from "@/graphql/mutations/auth";
+} from "@/graphql/auth/mutations";
 import { useMutation } from "@vue/apollo-composable";
 
 // Login
