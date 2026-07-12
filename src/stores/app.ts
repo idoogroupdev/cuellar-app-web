@@ -1,7 +1,7 @@
-import type { PermissionNode } from "@/graphql/entities/permission";
+import type { PermissionNode } from "@/graphql/permission/entities";
 import type { UserNode } from "@/graphql/user/entities";
 import { defineStore } from "pinia";
-import type { RoleName } from "@/graphql/entities/roles";
+import type { RoleName } from "@/graphql/roles/entities";
 
 export type PermissionsType = "view" | "add" | "change" | "delete";
 

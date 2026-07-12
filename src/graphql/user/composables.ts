@@ -9,7 +9,7 @@ import { ALL_USERS } from "@/graphql/user/queries";
 import { useMutation, useQuery } from "@vue/apollo-composable";
 import { PAGE_SIZE, DEFAULT_PAGINATION } from "@/graphql/common/constants";
 import { useQueryParams } from "@/composables/useQueryParams";
-import type { RoleName } from "@/graphql/entities/roles";
+import type { RoleName } from "@/graphql/roles/entities";
 
 // All users
 

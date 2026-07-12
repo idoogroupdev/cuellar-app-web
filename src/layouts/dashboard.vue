@@ -102,7 +102,7 @@ import type { PermissionsType, SectionType } from "@/stores/app";
 import { useAppStore } from "@/stores/app";
 import { useRoute, useRouter } from "vue-router";
 import { useLocale } from "vuetify";
-import type { RoleName } from "@/graphql/entities/roles";
+import type { RoleName } from "@/graphql/roles/entities";
 
 const { mutate: revokeToken, loading } = useRevokeRefreshToken();
 const { deleteCookies, refresh } = useAuthCookie();
