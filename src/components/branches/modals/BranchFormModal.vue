@@ -63,16 +63,16 @@ import BranchForm, {
   type BranchFormValues,
   type BranchFormErrors,
 } from "@/components/branches/forms/BranchForm.vue";
-import type { BranchNode, BranchHourNode } from "@/graphql/entities/branch";
+import type { BranchNode, BranchHourNode } from "@/graphql/branch/entities";
 import {
   useCreateBranch,
   useUpdateBranch,
   useSyncBranchHour,
-} from "@/graphql/composables/branch";
+} from "@/graphql/branch/composables";
 import { normalizeApolloError } from "@/lib/helpers";
 import { useMessagesStore } from "@/stores/messages";
 import { useLocale } from "vuetify";
-import type { BranchHour } from "@/graphql/composables/branch";
+import type { BranchHour } from "@/graphql/branch/composables";
 
 const emit = defineEmits<{
   "update:modelValue": [boolean];

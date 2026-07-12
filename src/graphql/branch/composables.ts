@@ -1,7 +1,7 @@
 import { useQueryParams } from "@/composables/useQueryParams";
 import { DEFAULT_PAGINATION, PAGE_SIZE } from "@/graphql/composables/constants";
-import type { BranchNode, BranchHourNode } from "@/graphql/entities/branch";
-import type { DayOfWeek } from "@/graphql/entities/branch";
+import type { BranchNode, BranchHourNode } from "@/graphql/branch/entities";
+import type { DayOfWeek } from "@/graphql/branch/entities";
 import type {
   CommonParams,
   ComposableQueryArgs,
@@ -11,8 +11,8 @@ import {
   CREATE_BRANCH,
   UPDATE_BRANCH,
   SYNC_BRANCH_HOUR,
-} from "@/graphql/mutations/branch";
-import { ALL_BRANCHES } from "@/graphql/queries/branch";
+} from "@/graphql/branch/mutations";
+import { ALL_BRANCHES } from "@/graphql/branch/queries";
 import { useMutation, useQuery } from "@vue/apollo-composable";
 
 // All branches

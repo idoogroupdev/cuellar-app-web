@@ -24,8 +24,8 @@
   </v-select>
 </template>
 <script setup lang="ts">
-import { useAllBranches } from "@/graphql/composables/branch";
-import { type BranchNode } from "@/graphql/entities/branch";
+import { useAllBranches } from "@/graphql/branch/composables";
+import { type BranchNode } from "@/graphql/branch/entities";
 
 const { error, onResult, loading, page, load } = useAllBranches({
   updateRoute: false,

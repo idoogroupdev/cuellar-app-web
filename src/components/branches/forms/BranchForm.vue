@@ -45,7 +45,7 @@
   </v-form>
 </template>
 <script setup lang="ts">
-import type { BranchNode } from "@/graphql/entities/branch";
+import type { BranchNode } from "@/graphql/branch/entities";
 import * as z from "zod";
 import { computed, watch } from "vue";
 import { useField, useForm } from "vee-validate";

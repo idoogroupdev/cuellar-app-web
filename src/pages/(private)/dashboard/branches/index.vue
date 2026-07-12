@@ -99,7 +99,7 @@ meta:
   </v-data-table-server>
 </template>
 <script setup lang="ts">
-import { useAllBranches } from "@/graphql/composables/branch";
+import { useAllBranches } from "@/graphql/branch/composables";
 import { useLocale } from "vuetify";
 import { useAppStore } from "@/stores/app";
 

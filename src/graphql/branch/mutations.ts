@@ -1,5 +1,5 @@
 import gql from "graphql-tag";
-import { BRANCH_FIELDS, BRANCH_HOURS_FIELDS } from "@/graphql/fragments/branch";
+import { BRANCH_FIELDS, BRANCH_HOURS_FIELDS } from "@/graphql/branch/fragments";
 
 export const CREATE_BRANCH = gql`
   ${BRANCH_FIELDS}

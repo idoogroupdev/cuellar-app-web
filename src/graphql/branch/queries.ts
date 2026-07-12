@@ -1,4 +1,4 @@
-import { BRANCH_FIELDS } from "@/graphql/fragments/branch";
+import { BRANCH_FIELDS } from "@/graphql/branch/fragments";
 import { PAGINATION } from "@/graphql/fragments/common";
 import gql from "graphql-tag";
 

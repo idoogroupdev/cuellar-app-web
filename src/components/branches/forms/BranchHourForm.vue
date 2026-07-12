@@ -52,7 +52,7 @@
   </v-form>
 </template>
 <script lang="ts" setup>
-import type { BranchHourNode } from "@/graphql/entities/branch";
+import type { BranchHourNode } from "@/graphql/branch/entities";
 
 const emit = defineEmits<{
   submit: [BranchHourNode[]];
