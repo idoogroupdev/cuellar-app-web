@@ -1,4 +1,4 @@
-import type { UserNode } from "@/graphql/entities/user";
+import type { UserNode } from "@/graphql/user/entities";
 import type { GraphQLFormattedError } from "graphql";
 
 type FieldErrors = Record<string, string>;

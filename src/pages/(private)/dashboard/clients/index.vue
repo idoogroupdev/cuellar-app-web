@@ -92,7 +92,7 @@ meta:
   </v-data-table-server>
 </template>
 <script setup lang="ts">
-import { useAllUsers } from "@/graphql/composables/user";
+import { useAllUsers } from "@/graphql/user/composables";
 import { useLocale } from "vuetify";
 import { getOrderBy, getFullName } from "@/lib/helpers";
 import { useAppStore } from "@/stores/app";

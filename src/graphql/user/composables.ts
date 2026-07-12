@@ -3,9 +3,9 @@ import type {
   CommonParams,
   ComposableQueryArgs,
 } from "@/graphql/entities/common";
-import type { UserNode } from "@/graphql/entities/user";
-import { CREATE_USER, UPDATE_USER } from "@/graphql/mutations/user";
-import { ALL_USERS } from "@/graphql/queries/user";
+import type { UserNode } from "@/graphql/user/entities";
+import { CREATE_USER, UPDATE_USER } from "@/graphql/user/mutations";
+import { ALL_USERS } from "@/graphql/user/queries";
 import { useMutation, useQuery } from "@vue/apollo-composable";
 import { PAGE_SIZE, DEFAULT_PAGINATION } from "@/graphql/composables/constants";
 import { useQueryParams } from "@/composables/useQueryParams";

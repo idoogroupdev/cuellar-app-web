@@ -1,5 +1,5 @@
 import gql from "graphql-tag";
-import { USER_FIELDS } from "@/graphql/fragments/user";
+import { USER_FIELDS } from "@/graphql/user/fragments";
 import { PAGINATION } from "@/graphql/fragments/common";
 
 export const ALL_USERS = gql`

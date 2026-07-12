@@ -87,7 +87,7 @@
 </template>
 
 <script setup lang="ts">
-import type { UserNode } from "@/graphql/entities/user";
+import type { UserNode } from "@/graphql/user/entities";
 import * as z from "zod";
 import { computed, watch } from "vue";
 import { useField, useForm } from "vee-validate";

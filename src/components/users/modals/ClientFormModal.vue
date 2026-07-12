@@ -48,8 +48,8 @@ import ClientForm, {
   type ClientFormValues,
   type ClientFormErrors,
 } from "@/components/users/forms/ClientForm.vue";
-import type { UserNode } from "@/graphql/entities/user";
-import { useCreateUser, useUpdateUser } from "@/graphql/composables/user";
+import type { UserNode } from "@/graphql/user/entities";
+import { useCreateUser, useUpdateUser } from "@/graphql/user/composables";
 import { normalizeApolloError } from "@/lib/helpers";
 import { useMessagesStore } from "@/stores/messages";
 import { useLocale } from "vuetify";

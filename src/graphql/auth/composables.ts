@@ -1,4 +1,4 @@
-import type { UserNode } from "@/graphql/entities/user";
+import type { UserNode } from "@/graphql/user/entities";
 import {
   LOGIN,
   REVOKE_TOKEN,
