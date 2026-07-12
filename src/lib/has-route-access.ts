@@ -13,5 +13,9 @@ export function hasRouteAccess() {
     return hasPermission("view", "user", ["ADMIN", "OPERATOR"]);
   }
 
+  if (route.name == "/(private)/dashboard/branches/") {
+    return hasPermission("view", "branch", ["ADMIN", "OPERATOR"]);
+  }
+
   return true;
 }
