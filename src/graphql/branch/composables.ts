@@ -1,12 +1,12 @@
 import { useQueryParams } from "@/composables/useQueryParams";
-import { DEFAULT_PAGINATION, PAGE_SIZE } from "@/graphql/composables/constants";
+import { DEFAULT_PAGINATION, PAGE_SIZE } from "@/graphql/common/constants";
 import type { BranchNode, BranchHourNode } from "@/graphql/branch/entities";
 import type { DayOfWeek } from "@/graphql/branch/entities";
 import type {
   CommonParams,
   ComposableQueryArgs,
   Pagination,
-} from "@/graphql/entities/common";
+} from "@/graphql/common/entities";
 import {
   CREATE_BRANCH,
   UPDATE_BRANCH,

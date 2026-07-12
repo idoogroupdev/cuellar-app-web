@@ -1,5 +1,5 @@
 import { BRANCH_FIELDS } from "@/graphql/branch/fragments";
-import { PAGINATION } from "@/graphql/fragments/common";
+import { PAGINATION } from "@/graphql/common/fragments";
 import gql from "graphql-tag";
 
 export const ALL_BRANCHES = gql`

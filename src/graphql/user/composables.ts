@@ -2,12 +2,12 @@ import type {
   Pagination,
   CommonParams,
   ComposableQueryArgs,
-} from "@/graphql/entities/common";
+} from "@/graphql/common/entities";
 import type { UserNode } from "@/graphql/user/entities";
 import { CREATE_USER, UPDATE_USER } from "@/graphql/user/mutations";
 import { ALL_USERS } from "@/graphql/user/queries";
 import { useMutation, useQuery } from "@vue/apollo-composable";
-import { PAGE_SIZE, DEFAULT_PAGINATION } from "@/graphql/composables/constants";
+import { PAGE_SIZE, DEFAULT_PAGINATION } from "@/graphql/common/constants";
 import { useQueryParams } from "@/composables/useQueryParams";
 import type { RoleName } from "@/graphql/entities/roles";
 
