@@ -7,7 +7,7 @@ export type PermissionsType = "view" | "add" | "change" | "delete";
 
 // This is the codename permission in Django for
 // easy understanding in the UI I will call it section
-export type SectionType = "user" | "branch";
+export type SectionType = "user" | "branch" | "category";
 
 export const useAppStore = defineStore(
   "app",

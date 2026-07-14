@@ -200,6 +200,22 @@ const drawerSectionConfig: DrawerSectionConfig[] = [
       },
     ],
   },
+  {
+    title: "sections.categories",
+    icon: "mdi-store",
+    items: [
+      {
+        title: "sections.categories",
+        to: "/dashboard/categories/",
+        route: "/(private)/dashboard/categories/",
+        requiredPermission: {
+          permission: "view",
+          section: "category",
+          roles: ["ADMIN", "OPERATOR"],
+        },
+      },
+    ],
+  },
 ];
 
 const menu = computed(() => {

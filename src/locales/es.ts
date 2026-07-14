@@ -127,6 +127,7 @@ export default {
     users: "Usuarios",
     clients: "Clientes",
     branches: "Sucursales",
+    categories: "Categorías",
   },
   tooltip: {
     deactivateUserAccessSystem:
@@ -159,5 +160,11 @@ export default {
     friday: "Viernes",
     saturday: "Sábado",
     sunday: "Domingo",
+  },
+  categories: {
+    table: {
+      empty: "No hay categorías para mostrar",
+      search: "Buscar por nombre",
+    },
   },
 };

@@ -38,6 +38,7 @@ export function useAllCategories({
   updateRoute = true,
   limit = PAGE_SIZE,
   keyParam = "allCategories",
+  parentIsnull = true,
   skipWriteParams = [],
 }: ComposableQueryArgs = {}) {
   interface AllCategoriesQueryParams extends CommonParams {
@@ -51,6 +52,7 @@ export function useAllCategories({
     itemsPerPage: limit,
     query: undefined,
     orderBy: undefined,
+    parentIsnull: parentIsnull,
   };
 
   const queryParams = useQueryParams();
