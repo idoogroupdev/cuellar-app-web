@@ -169,5 +169,14 @@ export default {
       empty: "No hay categorías para mostrar",
       search: "Buscar por nombre",
     },
+    forms: {
+      updated: "Categoría actualizada correctamente",
+      created: "Categoría creada correctamente",
+    },
+    modals: {
+      editTitle: "Editar categoría",
+      createTitle: "Crear categoría",
+      description: "Gestiona la información de una categoría",
+    },
   },
 };
