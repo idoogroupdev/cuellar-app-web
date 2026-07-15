@@ -5,7 +5,8 @@ import type {
 } from "@/graphql/common/entities";
 import type { CategoryNode } from "@/graphql/category/entities";
 import { ALL_CATEGORIES } from "@/graphql/category/queries";
-import { useQuery } from "@vue/apollo-composable";
+import { CREATE_CATEGORY, UPDATE_CATEGORY } from "@/graphql/category/mutations";
+import { useQuery, useMutation } from "@vue/apollo-composable";
 import { PAGE_SIZE, DEFAULT_PAGINATION } from "@/graphql/common/constants";
 import { useQueryParams } from "@/composables/useQueryParams";
 
@@ -106,4 +107,55 @@ export function useAllCategories({
     load,
     search,
   };
+}
+
+// Crate category
+
+interface CreateBranchInput {
+  name: string;
+  sortOrder?: number;
+  isActive: boolean;
+  parentId?: boolean;
+}
+
+interface CreateCategoryMutation {
+  createCategory: {
+    category: CategoryNode;
+  };
+}
+
+interface CreateCategoryMutationVariables {
+  input: CreateBranchInput;
+}
+
+export function useCreateCategory() {
+  return useMutation<CreateCategoryMutation, CreateCategoryMutationVariables>(
+    CREATE_CATEGORY,
+  );
+}
+
+// Update category
+
+interface UpdateBranchInput {
+  id: string;
+  name?: string;
+  sortOrder?: number;
+  isActive?: boolean;
+  parentId?: boolean;
+}
+
+interface UpdateCategoryMutation {
+  updateCategory: {
+    category: CategoryNode;
+  };
+}
+
+interface UpdateCategoryMutationVariables {
+  input: UpdateBranchInput;
+}
+
+export function useUpdateCategory() {
+  return useMutation<UpdateCategoryMutation, UpdateCategoryMutationVariables>(
+    UPDATE_CATEGORY,
+  );
 }
