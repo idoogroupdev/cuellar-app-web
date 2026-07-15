@@ -122,6 +122,7 @@ export default {
     users: "Usuarios",
     clients: "Clientes",
     branches: "Sucursales",
+    categories: "Categorías",
   },
   sections: {
     users: "Usuarios",
