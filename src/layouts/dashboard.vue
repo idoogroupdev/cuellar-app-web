@@ -202,7 +202,7 @@ const drawerSectionConfig: DrawerSectionConfig[] = [
   },
   {
     title: "sections.categories",
-    icon: "mdi-store",
+    icon: "mdi-tag",
     items: [
       {
         title: "sections.categories",

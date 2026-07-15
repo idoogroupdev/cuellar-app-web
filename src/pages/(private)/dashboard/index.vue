@@ -65,6 +65,13 @@ const cards = computed<Card[]>(() => {
       to: "/dashboard/branches/",
       isVisible: hasPermission("view", "branch", ["ADMIN", "OPERATOR"]),
     },
+    {
+      title: t("sections.categories"),
+      description: t("home.manageCategories"),
+      icon: "mdi-tag",
+      to: "/dashboard/categories/",
+      isVisible: hasPermission("view", "category", ["ADMIN", "OPERATOR"]),
+    },
   ];
 });
 </script>
