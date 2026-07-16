@@ -20,6 +20,7 @@ declare module 'vue' {
     CategoryFormModal: typeof import('./components/categories/modals/CategoryFormModal.vue')['default']
     ClientForm: typeof import('./components/users/forms/ClientForm.vue')['default']
     ClientFormModal: typeof import('./components/users/modals/ClientFormModal.vue')['default']
+    DeleteCategoryModal: typeof import('./components/categories/modals/DeleteCategoryModal.vue')['default']
     EmailIcon: typeof import('./components/iconsax/EmailIcon.vue')['default']
     LockIcon: typeof import('./components/iconsax/LockIcon.vue')['default']
     Login: typeof import('./components/auth/forms/Login.vue')['default']
