@@ -31,3 +31,26 @@ export const Edit: Story = {
     loading: false,
   },
 };
+
+export const CreateCompact: Story = {
+  args: {
+    category: null,
+    loading: false,
+    variant: "compact",
+  },
+};
+
+export const EditCompact: Story = {
+  args: {
+    category: {
+      id: "1",
+      name: "Test",
+      isActive: false,
+      parentId: "1",
+      sortOrder: 0,
+      subcategories: [],
+    },
+    loading: false,
+    variant: "compact",
+  },
+};

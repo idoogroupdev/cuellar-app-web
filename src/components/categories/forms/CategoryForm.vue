@@ -1,14 +1,22 @@
 <template>
-  <v-form @submit.prevent="submit" class="pa-4 d-flex flex-column ga-3">
+  <v-form
+    @submit.prevent="submit"
+    :class="[
+      'd-flex  ga-3',
+      variant === 'compact' ? 'flex-row' : 'flex-column',
+    ]"
+  >
     <v-text-field
       :label="$t('forms.name')"
       type="name"
       v-model="name.value.value"
       :error-messages="name.errorMessage.value"
       prepend-inner-icon="mdi-text"
+      hide-details="auto"
     />
 
     <v-switch
+      v-if="variant === 'normal'"
       :label="$t('forms.isActive')"
       v-model="isActive.value.value"
       :error-messages="isActive.errorMessage.value"
@@ -17,14 +25,27 @@
     </v-switch>
 
     <v-btn
-      class="mt-3"
+      :class="variant === 'normal' ? 'mt-3' : ''"
       type="submit"
-      block
-      append-icon="mdi-content-save"
+      :block="variant === 'normal'"
+      :append-icon="variant === 'normal' ? 'mdi-content-save' : undefined"
       :loading
+      :icon="variant === 'compact' ? 'mdi-content-save' : undefined"
+      :density="variant === 'compact' ? 'comfortable' : undefined"
+      :variant="variant === 'compact' ? 'text' : undefined"
+      :text="
+        variant === 'compact'
+          ? undefined
+          : isEditing
+            ? $t('forms.update')
+            : $t('forms.create')
+      "
     >
-      {{ isEditing ? $t("forms.update") : $t("forms.create") }}
     </v-btn>
+    <DeleteCategoryModal
+      v-if="category && variant === 'compact'"
+      :category="category"
+    />
   </v-form>
 </template>
 <script setup lang="ts">
@@ -54,11 +75,13 @@ const emit = defineEmits<{
 const props = withDefaults(
   defineProps<{
     loading: boolean;
+    variant?: "compact" | "normal";
     category?: CategoryNode | null;
   }>(),
   {
     loading: false,
     category: null,
+    variant: "normal",
   },
 );
 
