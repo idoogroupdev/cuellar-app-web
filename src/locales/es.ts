@@ -24,11 +24,13 @@ export default {
     phone: "Teléfono",
     create: "Crear",
     update: "Guardar cambios",
+    delete: "Eliminar",
     name: "Nombre",
     address: "Dirección",
     isPickupEnabled: "Recogida habilitada",
     pickupEnabled: "Habilitar recogida",
     inactive: "Inactivo",
+    cancel: "Cancelar",
   },
   users: {
     table: {
@@ -177,6 +179,9 @@ export default {
       editTitle: "Editar categoría",
       createTitle: "Crear categoría",
       description: "Gestiona la información de una categoría",
+      deleteTitle: "Eliminar categoría",
+      deleteDescription:
+        "¿Estás seguro de que quieres eliminar la categoría {name} ? Esta acción no se puede deshacer.",
     },
   },
 };
