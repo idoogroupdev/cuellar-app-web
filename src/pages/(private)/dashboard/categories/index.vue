@@ -46,6 +46,10 @@ meta:
             />
           </template>
         </v-text-field>
+        <CategoryFormModal
+          v-if="hasPermission('add', 'category', ['ADMIN', 'OPERATOR'])"
+          @saved="(category) => search()"
+        />
       </div>
     </template>
     <template v-slot:item="{ item }">
@@ -60,7 +64,22 @@ meta:
             {{ item.isActive ? $t("forms.isActive") : $t("forms.inactive") }}
           </v-chip>
         </td>
-        <td>...</td>
+        <td>
+          <CategoryFormModal
+            v-if="hasPermission('change', 'category', ['ADMIN', 'OPERATOR'])"
+            @saved="(category) => search(page)"
+            :category="item"
+          >
+            <template #activator="{ props }">
+              <v-btn
+                density="compact"
+                icon="mdi-pencil"
+                variant="text"
+                v-bind="props"
+              />
+            </template>
+          </CategoryFormModal>
+        </td>
       </tr>
     </template>
   </v-data-table-server>
@@ -68,8 +87,10 @@ meta:
 <script setup lang="ts">
 import { useAllCategories } from "@/graphql/category/composables";
 import { useLocale } from "vuetify";
+import { useAppStore } from "@/stores/app";
 
 const { t } = useLocale();
+const { hasPermission } = useAppStore();
 const {
   allCategories,
   error,
