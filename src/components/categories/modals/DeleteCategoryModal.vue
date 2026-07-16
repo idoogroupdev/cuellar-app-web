@@ -2,7 +2,7 @@
   <v-dialog max-width="500" v-model="dialog">
     <template v-slot:activator>
       <v-btn
-        density="compact"
+        density="comfortable"
         icon="mdi-delete-outline"
         variant="text"
         @click="dialog = true"
