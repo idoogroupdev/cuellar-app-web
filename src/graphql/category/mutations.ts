@@ -22,3 +22,11 @@ export const UPDATE_CATEGORY = gql`
     }
   }
 `;
+
+export const DELETE_CATEGORY = gql`
+  mutation deleteCategory($input: DeleteCategoryInput!) {
+    deleteCategory(input: $input) {
+      success
+    }
+  }
+`;

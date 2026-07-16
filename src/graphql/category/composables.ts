@@ -5,7 +5,11 @@ import type {
 } from "@/graphql/common/entities";
 import type { CategoryNode } from "@/graphql/category/entities";
 import { ALL_CATEGORIES } from "@/graphql/category/queries";
-import { CREATE_CATEGORY, UPDATE_CATEGORY } from "@/graphql/category/mutations";
+import {
+  CREATE_CATEGORY,
+  UPDATE_CATEGORY,
+  DELETE_CATEGORY,
+} from "@/graphql/category/mutations";
 import { useQuery, useMutation } from "@vue/apollo-composable";
 import { PAGE_SIZE, DEFAULT_PAGINATION } from "@/graphql/common/constants";
 import { useQueryParams } from "@/composables/useQueryParams";
@@ -157,5 +161,27 @@ interface UpdateCategoryMutationVariables {
 export function useUpdateCategory() {
   return useMutation<UpdateCategoryMutation, UpdateCategoryMutationVariables>(
     UPDATE_CATEGORY,
+  );
+}
+
+// Delete category
+
+interface DeleteCategoryInput {
+  id: string;
+}
+
+interface DeleteCategoryMutation {
+  deleteCategory: {
+    success: boolean;
+  };
+}
+
+interface DeleteCategoryMutationVariables {
+  input: DeleteCategoryInput;
+}
+
+export function useDeleteCategory() {
+  return useMutation<DeleteCategoryMutation, DeleteCategoryMutationVariables>(
+    DELETE_CATEGORY,
   );
 }
