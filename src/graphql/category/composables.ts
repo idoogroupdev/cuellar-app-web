@@ -115,7 +115,7 @@ interface CreateBranchInput {
   name: string;
   sortOrder?: number;
   isActive: boolean;
-  parentId?: boolean;
+  parentId?: string;
 }
 
 interface CreateCategoryMutation {
@@ -141,7 +141,7 @@ interface UpdateBranchInput {
   name?: string;
   sortOrder?: number;
   isActive?: boolean;
-  parentId?: boolean;
+  parentId?: string;
 }
 
 interface UpdateCategoryMutation {
