@@ -42,9 +42,8 @@ export interface CategoryFormValues {
 }
 
 export interface CategoryFormErrors {
-  id?: string;
   name?: string;
-  isActive?: boolean;
+  isActive?: string;
   parentId?: string;
 }
 
