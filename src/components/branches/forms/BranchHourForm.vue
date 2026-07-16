@@ -1,5 +1,5 @@
 <template>
-  <v-form @submit.prevent="submit" class="pa-4 border">
+  <v-form @submit.prevent="submit" class="pa-4">
     <v-alert v-if="error" :text="error" type="error" class="mb-6" />
     <v-row v-for="item in days" :key="item.id" class="" size="7">
       <v-col cols="4">
