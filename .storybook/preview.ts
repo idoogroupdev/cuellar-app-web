@@ -3,6 +3,7 @@ import { setup } from "@storybook/vue3-vite";
 import vuetify, { i18n } from "../src/plugins/vuetify";
 import { vueRouter } from "storybook-vue3-router";
 import pinia from "../src/stores";
+import { apolloProvider } from "../src/plugins/apollo";
 
 // Styles
 // @ts-ignore
@@ -14,6 +15,7 @@ setup((app) => {
   app.use(i18n);
   app.use(vuetify);
   app.use(pinia);
+  app.use(apolloProvider);
 });
 
 const preview: Preview = {
