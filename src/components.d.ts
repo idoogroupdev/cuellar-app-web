@@ -17,6 +17,7 @@ declare module 'vue' {
     BranchHourForm: typeof import('./components/branches/forms/BranchHourForm.vue')['default']
     Breadcrumbs: typeof import('./components/ui/Breadcrumbs.vue')['default']
     CategoryForm: typeof import('./components/categories/forms/CategoryForm.vue')['default']
+    CategoryFormModal: typeof import('./components/categories/modals/CategoryFormModal.vue')['default']
     ClientForm: typeof import('./components/users/forms/ClientForm.vue')['default']
     ClientFormModal: typeof import('./components/users/modals/ClientFormModal.vue')['default']
     EmailIcon: typeof import('./components/iconsax/EmailIcon.vue')['default']
