@@ -79,6 +79,7 @@ meta:
               />
             </template>
           </CategoryFormModal>
+          <DeleteCategoryModal :category="item" @success="() => search()" />
         </td>
       </tr>
     </template>
