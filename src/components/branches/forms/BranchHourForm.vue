@@ -31,7 +31,7 @@
           icon="mdi-delete-outline"
           variant="text"
           @click="removeDay(Number(item.id))"
-          :disabled="days.length === 1"
+          :disabled="days.length === 1 && item.dayOfWeek === undefined"
         >
         </v-btn>
       </v-col>
