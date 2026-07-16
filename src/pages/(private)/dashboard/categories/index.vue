@@ -64,7 +64,7 @@ meta:
             {{ item.isActive ? $t("forms.isActive") : $t("forms.inactive") }}
           </v-chip>
         </td>
-        <td class="d-flex ga-4">
+        <td>
           <CategoryFormModal
             v-if="hasPermission('change', 'category', ['ADMIN', 'OPERATOR'])"
             @saved="(category) => search(page)"
@@ -79,7 +79,11 @@ meta:
               />
             </template>
           </CategoryFormModal>
-          <DeleteCategoryModal :category="item" @success="() => search()" />
+          <DeleteCategoryModal
+            class="bg-red"
+            :category="item"
+            @success="() => search()"
+          />
         </td>
       </tr>
     </template>
