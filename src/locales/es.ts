@@ -182,6 +182,7 @@ export default {
       deleteTitle: "Eliminar categoría",
       deleteDescription:
         "¿Estás seguro de que quieres eliminar la categoría {name} ? Esta acción no se puede deshacer.",
+      deleted: "Categoría eliminada correctamente",
     },
   },
 };
