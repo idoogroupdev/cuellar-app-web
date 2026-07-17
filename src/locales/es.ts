@@ -13,6 +13,7 @@ export default {
   save: "Guardar",
   information: "Información",
   workingHours: "Horario de trabajo",
+  subcategories: "Subcategorías",
   forms: {
     email: "Correo electrónico",
     password: "Contraseña",
@@ -174,6 +175,7 @@ export default {
     forms: {
       updated: "Categoría actualizada correctamente",
       created: "Categoría creada correctamente",
+      addSubcategory: "Agregar subcategoría",
     },
     modals: {
       editTitle: "Editar categoría",
