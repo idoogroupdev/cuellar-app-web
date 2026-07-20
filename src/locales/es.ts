@@ -176,6 +176,7 @@ export default {
       updated: "Categoría actualizada correctamente",
       created: "Categoría creada correctamente",
       addSubcategory: "Agregar subcategoría",
+      subcategoriesUpdated: "Subcategorías actualizadas correctamente",
     },
     modals: {
       editTitle: "Editar categoría",

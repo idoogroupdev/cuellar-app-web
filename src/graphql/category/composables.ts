@@ -9,6 +9,7 @@ import {
   CREATE_CATEGORY,
   UPDATE_CATEGORY,
   DELETE_CATEGORY,
+  SYNC_SUBCATEGORIES,
 } from "@/graphql/category/mutations";
 import { useQuery, useMutation } from "@vue/apollo-composable";
 import { PAGE_SIZE, DEFAULT_PAGINATION } from "@/graphql/common/constants";
@@ -184,4 +185,28 @@ export function useDeleteCategory() {
   return useMutation<DeleteCategoryMutation, DeleteCategoryMutationVariables>(
     DELETE_CATEGORY,
   );
+}
+
+//  Sync subcategories
+
+interface SyncSubcategoriesInput {
+  parentId: string;
+  names: string[];
+}
+
+interface SyncSubcategoriesMutation {
+  syncSubcategories: {
+    success: boolean;
+  };
+}
+
+interface SyncSubcategoriesMutationVariables {
+  input: SyncSubcategoriesInput;
+}
+
+export function useSyncSubcategories() {
+  return useMutation<
+    SyncSubcategoriesMutation,
+    SyncSubcategoriesMutationVariables
+  >(SYNC_SUBCATEGORIES);
 }
