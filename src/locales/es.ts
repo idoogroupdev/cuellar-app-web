@@ -185,6 +185,7 @@ export default {
       deleteDescription:
         "¿Estás seguro de que quieres eliminar la categoría {name} ? Esta acción no se puede deshacer.",
       deleted: "Categoría eliminada correctamente",
+      subcategoryName: "Nombre de la subcategoría",
     },
   },
 };
