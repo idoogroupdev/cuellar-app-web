@@ -36,7 +36,6 @@ export const CreateCompact: Story = {
   args: {
     category: null,
     loading: false,
-    variant: "compact",
   },
 };
 
@@ -51,6 +50,5 @@ export const EditCompact: Story = {
       subcategories: [],
     },
     loading: false,
-    variant: "compact",
   },
 };
