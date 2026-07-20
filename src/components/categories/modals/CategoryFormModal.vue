@@ -23,12 +23,39 @@
         :subtitle="$t('categories.modals.description')"
       >
         <v-card-text>
-          <CategoryForm
-            :loading
-            :category="category"
-            @submit="onSubmit"
-            ref="formRef"
-          />
+          <v-sheet>
+            <v-tabs v-model="tab" color="primary" direction="horizontal">
+              <v-tab value="one">{{ $t("information") }}</v-tab>
+              <v-tab value="two" v-if="isEditing">{{
+                $t("subcategories")
+              }}</v-tab>
+            </v-tabs>
+            <v-divider></v-divider>
+            <v-tabs-window v-model="tab">
+              <v-tabs-window-item value="one">
+                <div class="mt-4">
+                  <CategoryForm
+                    :loading
+                    :category="category"
+                    @submit="onSubmit"
+                    ref="formRef"
+                  />
+                </div>
+              </v-tabs-window-item>
+              <v-tabs-window-item value="two">
+                <div class="mt-4">
+                  <SubCategoryForm
+                    v-if="category"
+                    :subcategories="category?.subcategories ?? []"
+                    :loading="syncing"
+                    :parent-id="category?.id"
+                    :error="syncError?.message"
+                    @submit="onSyncSubcategories"
+                  />
+                </div>
+              </v-tabs-window-item>
+            </v-tabs-window>
+          </v-sheet>
         </v-card-text>
         <template #append>
           <v-btn
@@ -51,6 +78,7 @@ import { type CategoryNode } from "@/graphql/category/entities";
 import {
   useCreateCategory,
   useUpdateCategory,
+  useSyncSubcategories,
 } from "@/graphql/category/composables";
 import { normalizeApolloError } from "@/lib/helpers";
 import { useMessagesStore } from "@/stores/messages";
@@ -71,6 +99,7 @@ const props = withDefaults(
 );
 
 const isOpen = ref(false);
+const tab = ref("one");
 
 const { t } = useLocale();
 const messages = useMessagesStore();
@@ -88,6 +117,12 @@ const {
   loading: updating,
   onError: onUpdateError,
 } = useUpdateCategory();
+
+const {
+  mutate: syncSubcategories,
+  loading: syncing,
+  error: syncError,
+} = useSyncSubcategories();
 
 const formRef = ref<InstanceType<typeof CategoryForm> | null>(null);
 const loading = computed(() => creating.value || updating.value);
@@ -133,6 +168,29 @@ const onSubmit = async (values: CategoryFormValues) => {
     if (!isEditing.value) {
       close();
     }
+  }
+};
+
+const onSyncSubcategories = async (names: string[]) => {
+  if (!props.category?.id) {
+    return;
+  }
+
+  const result = await syncSubcategories({
+    input: {
+      parentId: props.category.id,
+      names: names,
+    },
+  });
+
+  if (result?.data?.syncSubcategories?.success) {
+    messages.add({
+      text: t("categories.forms.subcategoriesUpdated"),
+      color: "success",
+      variant: "flat",
+    });
+
+    emit("saved", props.category);
   }
 };
 

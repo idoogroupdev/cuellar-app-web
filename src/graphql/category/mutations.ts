@@ -30,3 +30,11 @@ export const DELETE_CATEGORY = gql`
     }
   }
 `;
+
+export const SYNC_SUBCATEGORIES = gql`
+  mutation syncSubcategories($input: SyncSubcategoriesInput!) {
+    syncSubcategories(input: $input) {
+      success
+    }
+  }
+`;
