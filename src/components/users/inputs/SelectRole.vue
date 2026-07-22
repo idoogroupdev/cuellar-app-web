@@ -21,7 +21,7 @@ export interface Props {
 
 const props = withDefaults(defineProps<Props>(), {});
 
-const model = defineModel<string>("model", {
+const model = defineModel<string | undefined>("model", {
   default: undefined,
 });
 
