@@ -1,25 +1,29 @@
 <template>
   <v-form class="pa-4" @submit.prevent="submit">
     <v-alert v-if="error" :text="error" type="error" class="mb-6" />
-    <v-row v-for="(item, index) in names" :key="index" size="7">
-      <v-col>
-        <v-text-field
-          :label="$t('categories.modals.subcategoryName')"
-          v-model="names[index]"
-          hide-details="auto"
-          prepend-inner-icon="mdi-text"
-        />
-      </v-col>
-      <v-col cols="1" class="d-flex justify-center align-center">
-        <v-btn
-          density="compact"
-          icon="mdi-delete-outline"
-          variant="text"
-          @click="removeName(index)"
-        >
-        </v-btn>
-      </v-col>
-    </v-row>
+    <VueDraggable v-model="names">
+      <v-row v-for="(item, index) in names" :key="index" size="7">
+        <v-col>
+          <v-text-field
+            :label="$t('categories.modals.subcategoryName')"
+            v-model="names[index]"
+            hide-details="auto"
+            prepend-inner-icon="mdi-text"
+          />
+        </v-col>
+        <v-col cols="2" class="d-flex justify-center align-center">
+          <v-btn density="compact" icon="mdi-cursor-move" variant="text">
+          </v-btn>
+          <v-btn
+            density="compact"
+            icon="mdi-delete-outline"
+            variant="text"
+            @click="removeName(index)"
+          >
+          </v-btn>
+        </v-col>
+      </v-row>
+    </VueDraggable>
     <div class="d-flex justify-start align-center ga-4 mt-4">
       <v-btn @click="addName" type="button" append-icon="mdi-calendar-edit">
         {{ $t("add") }}
@@ -32,6 +36,7 @@
 </template>
 <script setup lang="ts">
 import type { CategoryNode } from "@/graphql/category/entities";
+import { VueDraggable } from "vue-draggable-plus";
 
 const emit = defineEmits<{
   submit: [string[]];
